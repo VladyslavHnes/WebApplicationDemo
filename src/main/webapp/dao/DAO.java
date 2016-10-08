@@ -5,7 +5,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 /**
@@ -17,46 +20,33 @@ import java.net.URL;
 
 public class DAO{
 
-    public  String adresS;
-    public  String porT;
-    public  String databaseName;
-    public  String userName;
-    public  String passworD;
+    public final String Adress;
+    public final String Port;
+    public final String DatabaseName;
+    public final String UserName;
+    public final String PassworD;
 
     @XmlAttribute
     public String getAdress() {
-        return adresS;
+        return Adress;
     }
 
-    public void setAdress(String adress) {
-        this.adresS = adress;
-    }
 
     @XmlAttribute
     public String getPort() {
-        return porT;
+        return Port;
     }
 
-    public void setPort(String port) {
-        this.porT = port;
-    }
 
     @XmlAttribute
-    public String getDatabase_name() {
-        return databaseName;
+    public String getDatabaseName() {
+        return DatabaseName;
     }
 
-    public void setDatabase_name(String database_name) {
-        this.databaseName = database_name;
-    }
 
     @XmlAttribute
     public String getUser_name() {
         return userName;
-    }
-
-    public void setUser_name(String user_name) {
-        this.userName = user_name;
     }
 
     @XmlAttribute
@@ -64,8 +54,12 @@ public class DAO{
         return passworD;
     }
 
-    public void setPassword(String password) {
-        this.passworD = password;
+    
+    public static void connectToDB() throws  SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = null;
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + , USERNAME, PASSWORD);
+        
     }
 
 
@@ -76,8 +70,5 @@ public class DAO{
         JAXBContext jaxbContext = JAXBContext.newInstance(DAO.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         DAO dao = (DAO) unmarshaller.unmarshal(file);
-
-
-
     }
 }
