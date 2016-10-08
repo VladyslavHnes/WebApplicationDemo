@@ -8,6 +8,8 @@ import java.io.File;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
+import model.Student;
 
 
 /**
@@ -19,45 +21,49 @@ import java.sql.SQLException;
 
 public class DAO{
 
-    public static String Adress;
-    public static String Port;
-    public static String DatabaseName;
-    public static String UserName;
-    public static String Password;
+    public static String adress;
+    public static String port;
+    public static String databaseName;
+    public static String rootName;
+    public static String userName;
+    public static String userPassword;
+    public static String lastName;
+    public static String password;
 
     @XmlAttribute
     public String getAdress() {
-        return Adress;
+        return adress;
     }
-
 
     @XmlAttribute
     public String getPort() {
-        return Port;
+        return port;
     }
-
 
     @XmlAttribute
     public String getDatabaseName() {
-        return DatabaseName;
+        return databaseName;
     }
-
-
+    
     @XmlAttribute
-    public String getUser_name() {
-        return UserName;
+    public String getRootName() {
+        return rootName;
     }
 
     @XmlAttribute
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    
-    public static void connectToDB() throws  SQLException, ClassNotFoundException {
+    public static void connectToDB(Student student) throws  SQLException, ClassNotFoundException {
+        
+        password = student.getPassword();
+        
+        Statement statement  = null;
+        String query = "SELECT* FROM Students WHERE LOGIN = " + firstName + ""
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = null;
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ DatabaseName + UserName + Password);
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ databaseName, rootName, password);
         
         
     }
