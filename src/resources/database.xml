@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<database>
+    <property>
+        <name>address</name>
+        <value>localhost</value>
+    </property>
+    <property>
+        <name>port</name>
+        <value>3306</value>
+    </property>
+    <property>
+        <name>database_name</name>
+        <value>university</value>
+    </property>
+    <property>
+        <name>user_name</name>
+        <value>root</value>
+    </property>
+    <property>
+        <name>password</name>
+        <value>021714g</value>
+    </property>
+</database>
