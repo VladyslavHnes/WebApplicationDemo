@@ -6,28 +6,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import model.Student;
 
 /**
  * Created by vlad on 19.09.2016.
  */
 public class LogInController extends HttpServlet {
-    String login;
-    String password;
 
-    public static void main(String [] args){
-        LogInController logInController = new LogInController();
-        while (true){
+    public void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, java.io.IOException {
 
+        try {
+            Student student = new Student();
+            student.setLogin(request.getParameter("login"));
+            student.setPassword(request.getParameter("password"));
+            //user = UserDAO.login(user);
+            if (student != null) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("currentSessionUser",student); 
+                response.sendRedirect("userLogged.jsp"); //logged-in page
+            }
+            else
+                response.sendRedirect("userLogged.jsp"); //error page
+        }
+        catch (Throwable theException) {
+            System.out.println(theException);
         }
     }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        login = (String)request.getAttribute("login");
-        session.setAttribute("login", login);
-        password = (String)request.getAttribute("password");
-        session.setAttribute("password", password);
-        System.out.println(login);
-    }
 }
+
