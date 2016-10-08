@@ -22,7 +22,7 @@ public abstract class User {
         this.lastName = firstName;
     }
 
-    public String getName(){
+    public String getLastName(){
         return lastName;
     }
 
