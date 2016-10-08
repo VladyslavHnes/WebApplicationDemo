@@ -25,7 +25,7 @@ public class DAO{
     public static String port;
     public static String databaseName;
     public static String rootName;
-    public static String userName;
+    public static String userLogin;
     public static String userPassword;
     public static String lastName;
     public static String password;
@@ -60,7 +60,7 @@ public class DAO{
         password = student.getPassword();
         
         Statement statement  = null;
-        String query = "SELECT* FROM Students WHERE LOGIN = " + firstName + ""
+        //String query = "SELECT* FROM Students WHERE LOGIN = " + firstName + ""
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = null;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ databaseName, rootName, password);
