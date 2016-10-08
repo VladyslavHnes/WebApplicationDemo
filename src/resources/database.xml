@@ -2,23 +2,23 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <database>
     <property>
-        <name>Address</name>
+        <name>address</name>
         <value>localhost</value>
     </property>
     <property>
-        <name>Port</name>
+        <name>port</name>
         <value>3306</value>
     </property>
     <property>
-        <name>DatabaseName</name>
+        <name>databaseName</name>
         <value>university</value>
     </property>
     <property>
-        <name>UserName</name>
+        <name>rootName</name>
         <value>root</value>
     </property>
     <property>
-        <name>Password</name>
+        <name>password</name>
         <value>021714g</value>
     </property>
 </database>
