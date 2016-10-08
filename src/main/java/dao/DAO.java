@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Student;
+import java.sql.ResultSet;
 
 
 /**
@@ -29,6 +30,7 @@ public class DAO{
     public static String userPassword;
     public static String lastName;
     public static String password;
+    
 
     @XmlAttribute
     public String getAdress() {
@@ -55,21 +57,50 @@ public class DAO{
         return password;
     }
 
-    public static void connectToDB(Student student) throws  SQLException, ClassNotFoundException {
-        
-        password = student.getPassword();
-        
-        Statement statement  = null;
-        //String query = "SELECT* FROM Students WHERE LOGIN = " + firstName + ""
-        Class.forName("com.mysql.jdbc.Driver");
+    public static Student connectToDB(Student student) throws  SQLException, ClassNotFoundException {
+        Connection currentCon = null;
+        ResultSet rs = null;  
+        Statement stmt = null;
         Connection conn = null;
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ databaseName, rootName, password);
-        
-        
+        userPassword = student.getPassword();
+        userLogin = student.getLogin();
+        Statement statement  = null;
+        String query = "SELECT* FROM Students WHERE login = " + userLogin + " AND password = " + userPassword + ");";
+        System.out.println("Your login is " + userLogin);          
+        System.out.println("Your password is " + password);
+        System.out.println("Query: "+ query);
+        try{
+             conn = ConnectionManager.getConnection(userLogin,userPassword,databaseName);
+             stmt=conn.createStatement();
+             rs = stmt.executeQuery(query);	        
+             boolean more = rs.next();   
+        }catch(Exception ex){
+            System.out.println("Log In failed: An Exception has occurred! " + ex);
+        }finally {
+            if (rs != null){
+                try {
+                    rs.close();
+                }catch (Exception e) {}
+                rs = null;
+            }
+	
+            if (stmt != null){
+                try {
+                    stmt.close();
+                }catch (Exception e) {}
+                stmt = null;
+            }
+	
+            if (currentCon != null){
+                try {
+                    currentCon.close();
+                }catch (Exception e) {
+                }
+                currentCon = null;
+            }   
+        }
+        return student;
     }
-
-
-
 
     public static void initializeDatabesProperties() throws JAXBException{
         File file = new File("./src/resources/database.xml");
