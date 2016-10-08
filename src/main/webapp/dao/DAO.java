@@ -5,8 +5,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -20,11 +19,11 @@ import java.sql.SQLException;
 
 public class DAO{
 
-    public final String Adress;
-    public final String Port;
-    public final String DatabaseName;
-    public final String UserName;
-    public final String PassworD;
+    public static String Adress;
+    public static String Port;
+    public static String DatabaseName;
+    public static String UserName;
+    public static String Password;
 
     @XmlAttribute
     public String getAdress() {
@@ -46,19 +45,20 @@ public class DAO{
 
     @XmlAttribute
     public String getUser_name() {
-        return userName;
+        return UserName;
     }
 
     @XmlAttribute
     public String getPassword() {
-        return passworD;
+        return Password;
     }
 
     
     public static void connectToDB() throws  SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = null;
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + , USERNAME, PASSWORD);
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ DatabaseName + UserName + Password);
+        
         
     }
 
