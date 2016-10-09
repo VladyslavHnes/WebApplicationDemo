@@ -9,7 +9,6 @@ package dao;
  *
  * @author vlad
  */
-import static dao.DAO.databaseName;
  import java.sql.*;
 
 
@@ -18,31 +17,18 @@ import static dao.DAO.databaseName;
       static Connection con;
       static String url;
             
-      public static Connection getConnection(String userName, String password, String databaseName)
-      {
-        
-         try
-         {
-            String url = "jdbc:mysql://localhost:3306/"+ databaseName; 
+      public static Connection getConnection(String userName, String password, String databaseName){
+        try{
+            String url = "jdbc:mysql://localhost:3306/"+ databaseName;
             Class.forName("com.mysql.jdbc.Driver");
-            try
-            {            	
-               con = DriverManager.getConnection(url,userName,password); 
-                								
-                 
-            }
-            
-            catch (SQLException ex)
-            {
+            try{            	
+               con = DriverManager.getConnection(url,userName,password);   
+            }catch (SQLException ex){
                ex.printStackTrace();
             }
-         }
-
-         catch(ClassNotFoundException e)
-         {
+        }catch(ClassNotFoundException e){
             System.out.println(e);
-         }
-
-      return con;
+        }
+       return con;
       }
     }
