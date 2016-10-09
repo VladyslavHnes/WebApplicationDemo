@@ -5,7 +5,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.File;
-import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -64,7 +63,6 @@ public class DAO{
         Connection conn = null;
         userPassword = student.getPassword();
         userLogin = student.getLogin();
-        Statement statement  = null;
         String query = "SELECT* FROM Students WHERE login = " + userLogin + " AND password = " + userPassword + ");";
         System.out.println("Your login is " + userLogin);          
         System.out.println("Your password is " + password);
@@ -73,7 +71,6 @@ public class DAO{
              conn = ConnectionManager.getConnection(userLogin,userPassword,databaseName);
              stmt=conn.createStatement();
              rs = stmt.executeQuery(query);	        
-             boolean more = rs.next();   
         }catch(Exception ex){
             System.out.println("Log In failed: An Exception has occurred! " + ex);
         }finally {
@@ -83,14 +80,12 @@ public class DAO{
                 }catch (Exception e) {}
                 rs = null;
             }
-	
             if (stmt != null){
                 try {
                     stmt.close();
                 }catch (Exception e) {}
                 stmt = null;
             }
-	
             if (currentCon != null){
                 try {
                     currentCon.close();
