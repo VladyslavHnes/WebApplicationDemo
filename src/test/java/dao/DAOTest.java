@@ -116,7 +116,7 @@ public class DAOTest {
     @Test
     public void testInitializeDatabesProperties() throws Exception {
         System.out.println("initializeDatabesProperties");
-        DAO.initializeDatabesProperties();
+        DAO.initializeDatabaseProperties();
     }
     
 }

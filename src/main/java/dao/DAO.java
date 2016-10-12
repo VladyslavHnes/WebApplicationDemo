@@ -97,7 +97,7 @@ public class DAO{
         return student;
     }
 
-    public static void initializeDatabesProperties() throws JAXBException{
+    public static void initializeDatabaseProperties() throws JAXBException{
         File file = new File("./src/resources/database.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(DAO.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
