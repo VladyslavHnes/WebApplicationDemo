@@ -34,10 +34,14 @@ package dao;
       public static Connection getConnection(DAO dao){
         try{
             String databaseName = dao.getDatabaseName();
-            String url = "jdbc:mysql://localhost:3306/"+ databaseName;
+            String address = dao.getAddress();
+            int port = dao.getPort();
+            String root = dao.getRootName();
+            String password = dao.getPassword();
+            String url = "jdbc:mysql://" + address + ":" + port + "/"+ databaseName;
             Class.forName("com.mysql.jdbc.Driver");
             try{            	
-               con = DriverManager.getConnection(url,userName,password);   
+               con = DriverManager.getConnection(url, root, password);   
             }catch (SQLException ex){
                ex.printStackTrace();
             }

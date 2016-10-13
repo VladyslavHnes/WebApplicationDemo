@@ -46,7 +46,7 @@ public class DAOTest {
         System.out.println("getAdress");
         DAO instance = new DAO();
         String expResult = "localhost";
-        String result = instance.getAdress();
+        String result = instance.getAddress();
         assertEquals(expResult, result);
     }
 
@@ -95,18 +95,6 @@ public class DAOTest {
         DAO instance = new DAO();
         String expResult = "021714g";
         String result = instance.getPassword();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of connectToDB method, of class DAO.
-     */
-    @Test
-    public void testConnectToDB() throws Exception {
-        System.out.println("connectToDB");
-        Student student = null;
-        Student expResult = null;
-        Student result = DAO.connectToDB(student);
         assertEquals(expResult, result);
     }
 

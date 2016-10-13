@@ -32,7 +32,7 @@ public class DAO{
     
 
     @XmlAttribute
-    public String getAdress() {
+    public String getAddress() {
         return address;
     }
 
@@ -54,45 +54,6 @@ public class DAO{
     @XmlAttribute
     public String getPassword() {
         return password;
-    }
-
-    public static Student connectToDB(Student student) throws  SQLException, ClassNotFoundException {
-        Connection currentCon = null;
-        ResultSet rs = null;  
-        Statement stmt = null;
-        Connection conn = null;
-        String userPassword = student.getPassword();
-        String userLogin = student.getLogin();
-        String query = "SELECT* FROM Students WHERE login = " + userLogin + " AND password = " + userPassword + ");";
-        System.out.println("Query: "+ query);
-        try{
-             conn = ConnectionManager.getConnection(userLogin,userPassword,databaseName);
-             stmt=conn.createStatement();
-             rs = stmt.executeQuery(query);	        
-        }catch(Exception ex){
-            System.out.println("Log In failed: An Exception has occurred! " + ex);
-        }finally {
-            if (rs != null){
-                try {
-                    rs.close();
-                }catch (Exception e) {}
-                rs = null;
-            }
-            if (stmt != null){
-                try {
-                    stmt.close();
-                }catch (Exception e) {}
-                stmt = null;
-            }
-            if (currentCon != null){
-                try {
-                    currentCon.close();
-                }catch (Exception e) {
-                }
-                currentCon = null;
-            }   
-        }
-        return student;
     }
 
     public void initializeDatabaseProperties() throws JAXBException{ClassLoader classLoader = getClass().getClassLoader();
