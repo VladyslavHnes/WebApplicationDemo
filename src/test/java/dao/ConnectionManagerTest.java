@@ -47,7 +47,7 @@ public class ConnectionManagerTest {
         String userName = "root";
         String password = "021714g";
         String databaseName = "university";
-        Connection result = ConnectionManager.getConnection(userName, password, databaseName);
+        Connection result = ConnectionManager.getConnection();
         assertNotNull( "Check if null", result);
     }
     

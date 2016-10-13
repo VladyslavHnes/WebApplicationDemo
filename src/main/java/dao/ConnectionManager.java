@@ -22,12 +22,12 @@ package dao;
             String databaseName = dao.getDatabaseName();
             String address = dao.getAddress();
             int port = dao.getPort();
-            String root = dao.getRootName();
+            String user = dao.getUser();
             String password = dao.getPassword();
             String url = "jdbc:mysql://" + address + ":" + port + "/"+ databaseName;
             Class.forName("com.mysql.jdbc.Driver");
             try{            	
-               con = DriverManager.getConnection(url, root, password);   
+               con = DriverManager.getConnection(url, user, password);   
             }catch (SQLException ex){
                ex.printStackTrace();
             }
@@ -37,7 +37,12 @@ package dao;
        return con;
       }
       
-      public static Connection getConnection(DAOSingletone daoSingletone) {
+      private static Connection getConnection(DAOSingletone daoSingletone) {
           return getConnection(daoSingletone.getDAO());
+      }
+      
+      public static Connection getConnection() {
+          DAOSingletone daoSingletone = DAOSingletone.getInstance();
+          return getConnection(daoSingletone);
       }
     }

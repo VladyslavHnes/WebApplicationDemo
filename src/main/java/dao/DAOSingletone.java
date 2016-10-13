@@ -8,8 +8,9 @@ public class DAOSingletone {
     
     static {
         try {
-            dao.initializeDatabaseProperties();
+            dao = DAO.initializeDatabaseProperties();
         } catch (JAXBException ex) {
+            ex.toString();
         }
     }
     

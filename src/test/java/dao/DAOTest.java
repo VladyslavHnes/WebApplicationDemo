@@ -82,7 +82,7 @@ public class DAOTest {
         System.out.println("getRootName");
         DAO instance = new DAO();
         String expResult = "root";
-        String result = instance.getRootName();
+        String result = instance.getUser();
         assertEquals(expResult, result);
     }
 

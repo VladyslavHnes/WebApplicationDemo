@@ -5,27 +5,22 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.File;
+import javax.xml.bind.JAXB;
 
 @XmlRootElement(name = "database")
 @XmlAccessorType(XmlAccessType.FIELD)
 
 class DAO{
 
-    @XmlAttribute
+    @XmlElement
     public String address;
-    @XmlAttribute
+    @XmlElement
     public int port;
-    @XmlAttribute
+    @XmlElement
     public String databaseName;
-    @XmlAttribute
-    public String rootName;
-    @XmlAttribute
-    public String userLogin;
-    @XmlAttribute
-    public String userPassword;
-    @XmlAttribute
-    public String lastName;
-    @XmlAttribute
+    @XmlElement
+    public String user;
+    @XmlElement
     public String password;
     
     DAO() {}
@@ -42,19 +37,22 @@ class DAO{
         return databaseName;
     }
     
-    public String getRootName() {
-        return rootName;
+    public String getUser() {
+        return user;
     }
 
     public String getPassword() {
         return password;
     }
+    
 
-    DAO initializeDatabaseProperties() throws JAXBException{ClassLoader classLoader = getClass().getClassLoader();
+    static DAO initializeDatabaseProperties() throws JAXBException {
+        ClassLoader classLoader = DAO.class.getClassLoader();
         File file = new File(classLoader.getResource("database/credentials.xml").getFile());
         JAXBContext jaxbContext = JAXBContext.newInstance(DAO.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         DAO dao = (DAO) unmarshaller.unmarshal(file);
-        return dao;
+        DAO dao2 = JAXB.unmarshal(file, DAO.class);
+        return dao2;
     }
 }
