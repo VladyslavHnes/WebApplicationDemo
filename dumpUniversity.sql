@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS university;
 CREATE DATABASE university;
 USE university;
 -- MySQL dump 10.13  Distrib 5.5.23, for Win32 (x86)
