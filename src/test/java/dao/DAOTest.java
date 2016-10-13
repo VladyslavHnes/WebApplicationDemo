@@ -58,7 +58,7 @@ public class DAOTest {
         System.out.println("getPort");
         DAO instance = new DAO();
         String expResult = "3306";
-        String result = instance.getPort();
+        int result = instance.getPort();
         assertEquals(expResult, result);
     }
 
@@ -116,7 +116,8 @@ public class DAOTest {
     @Test
     public void testInitializeDatabesProperties() throws Exception {
         System.out.println("initializeDatabesProperties");
-        DAO.initializeDatabaseProperties();
+        DAO dao = new DAO();
+        dao.initializeDatabaseProperties();
     }
     
 }

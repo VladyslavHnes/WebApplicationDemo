@@ -21,23 +21,23 @@ import java.sql.ResultSet;
 
 public class DAO{
 
-    public static String adress;
-    public static String port;
-    public static String databaseName;
-    public static String rootName;
-    public static String userLogin;
-    public static String userPassword;
-    public static String lastName;
-    public static String password;
+    public String address;
+    public int port;
+    public String databaseName;
+    public String rootName;
+    public String userLogin;
+    public String userPassword;
+    public String lastName;
+    public String password;
     
 
     @XmlAttribute
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     @XmlAttribute
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
@@ -61,11 +61,9 @@ public class DAO{
         ResultSet rs = null;  
         Statement stmt = null;
         Connection conn = null;
-        userPassword = student.getPassword();
-        userLogin = student.getLogin();
+        String userPassword = student.getPassword();
+        String userLogin = student.getLogin();
         String query = "SELECT* FROM Students WHERE login = " + userLogin + " AND password = " + userPassword + ");";
-        System.out.println("Your login is " + userLogin);          
-        System.out.println("Your password is " + password);
         System.out.println("Query: "+ query);
         try{
              conn = ConnectionManager.getConnection(userLogin,userPassword,databaseName);
@@ -97,8 +95,8 @@ public class DAO{
         return student;
     }
 
-    public static void initializeDatabaseProperties() throws JAXBException{
-        File file = new File("./src/resources/database.xml");
+    public void initializeDatabaseProperties() throws JAXBException{ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("database/credentials.xml").getFile());
         JAXBContext jaxbContext = JAXBContext.newInstance(DAO.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         DAO dao = (DAO) unmarshaller.unmarshal(file);
