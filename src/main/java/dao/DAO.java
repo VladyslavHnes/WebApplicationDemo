@@ -51,8 +51,7 @@ class DAO{
         File file = new File(classLoader.getResource("database/credentials.xml").getFile());
         JAXBContext jaxbContext = JAXBContext.newInstance(DAO.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        DAO dao = (DAO) unmarshaller.unmarshal(file);
-        DAO dao2 = JAXB.unmarshal(file, DAO.class);
-        return dao2;
+        DAO dao = JAXB.unmarshal(file, DAO.class);
+        return dao;
     }
 }
