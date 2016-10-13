@@ -104,8 +104,8 @@ public class DAOTest {
     @Test
     public void testInitializeDatabesProperties() throws Exception {
         System.out.println("initializeDatabesProperties");
-        DAO dao = new DAO();
-        DAO some = dao.initializeDatabaseProperties();
+        DAOSingletone daoSingletone = DAOSingletone.getInstance();
+        DAO dao = daoSingletone.getDAO();
     }
     
 }
