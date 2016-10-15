@@ -36,13 +36,4 @@ package dao;
         }
        return con;
       }
-      
-      private static Connection getConnection(DAOSingletone daoSingletone) {
-          return getConnection(daoSingletone.getDAO());
-      }
-      
-      public static Connection getConnection() {
-          DAOSingletone daoSingletone = DAOSingletone.getInstance();
-          return getConnection(daoSingletone);
-      }
     }
