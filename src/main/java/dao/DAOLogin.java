@@ -17,8 +17,8 @@ import model.Teacher;
  * @author Admin
  */
 public class DAOLogin{
-    final static String studentRequest = "SELECT* FROM students WHERE login = ? and password = ?";
-    final static String teacherRequest = "SELECT* FROM teachers WHERE login = ? and password = ?";
+    final static String studentRequest = "SELECT * FROM students WHERE login = ? and password = ?";
+    final static String teacherRequest = "SELECT * FROM teachers WHERE login = ? and password = ?";
     static ResultSet studentResSet;
     static ResultSet teacherResSet;
     
