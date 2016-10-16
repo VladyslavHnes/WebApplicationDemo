@@ -31,6 +31,8 @@ public class DAOLogin{
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
+        queryResult.next();
+        String lastName = queryResult.getString("lastName");
         if(queryResult != null){
             return DAOLogin.getStudentObject(queryResult);
         }else{
