@@ -62,13 +62,13 @@ public class DAOLoginTest {
     public void testTeacherRequest() throws Exception {
         System.out.println("teacherRequest");
         String login = "Plato";
-        String password = "Greek123";
+        String password = "Grek123";
         Teacher result = DAOLogin.teacherRequest(login, password);
         assertEquals("Plato", result.getLastName());
-        assertEquals("Greek", result.getFirstName());
+        assertEquals("Grek", result.getFirstName());
         assertEquals("Plato", result.getLogin());
-        assertEquals("Greek123", result.getPassword());
-        assertEquals("philosphy", result.getSubject());
+        assertEquals("Grek123", result.getPassword());
+        assertEquals("philosophy", result.getSubject());
         
     }    
 }
