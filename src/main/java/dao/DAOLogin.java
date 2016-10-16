@@ -11,15 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Student;
 import model.Teacher;
-import model.User;
 
 /**
  *
  * @author Admin
  */
 public class DAOLogin{
-    final static String studentRequest = "SELECT ID FROM students WHERE login = ? and password = ?";
-    final static String teacherRequest = "SELECT ID FROM teachers WHERE login = ? and password = ?";
+    final static String studentRequest = "SELECT* FROM students WHERE login = ? and password = ?";
+    final static String teacherRequest = "SELECT* FROM teachers WHERE login = ? and password = ?";
     static ResultSet studentResSet;
     static ResultSet teacherResSet;
     
