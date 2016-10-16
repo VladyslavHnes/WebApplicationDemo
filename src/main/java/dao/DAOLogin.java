@@ -29,8 +29,9 @@ public class DAOLogin{
         PreparedStatement preparedStatement = ConnectionManager.con.prepareStatement(studentRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
-        if(preparedStatement.executeQuery()!= null){
-            return DAOLogin.getStudentObject(preparedStatement.executeQuery());
+        ResultSet queryResult = preparedStatement.executeQuery();
+        if(queryResult != null){
+            return DAOLogin.getStudentObject(queryResult);
         }else{
             return null;
         }
@@ -52,8 +53,9 @@ public class DAOLogin{
         PreparedStatement preparedStatement = ConnectionManager.con.prepareStatement(teacherRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
-        if(preparedStatement.executeQuery()!= null){
-            return DAOLogin.getTeacherObject(preparedStatement.executeQuery());
+        ResultSet queryResult = preparedStatement.executeQuery();
+        if(queryResult != null){
+            return DAOLogin.getTeacherObject(queryResult);
         }else{
             return null;
         }
