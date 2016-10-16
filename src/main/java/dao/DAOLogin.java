@@ -32,7 +32,9 @@ public class DAOLogin{
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
-        queryResult.next();
+        if(!queryResult.next()){
+            return null;
+        }
         Student student = new Student();
         DAOLogin.getUserObject(queryResult,student);
         return student;
@@ -54,7 +56,9 @@ public class DAOLogin{
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
-        queryResult.next();
+        if(!queryResult.next()){
+            return null;
+        }
         Teacher teacher = DAOLogin.getTeacherObject(queryResult); 
         return teacher;
     }
