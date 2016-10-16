@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,8 @@ public class DAOLogin{
     //Check if there is a student with current login and password and return object
     //If there is no the student, then return null
     public static Student studentRequest(String login, String password) throws SQLException{
-        PreparedStatement preparedStatement = ConnectionManager.con.prepareStatement(studentRequest);
+        Connection connection = ConnectionManager.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(studentRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
@@ -50,7 +52,7 @@ public class DAOLogin{
     //Check if there is a teacher with current login and password and return object
     //If there is no the teacher, then return null
     public static Teacher teacherRequest(String login, String password) throws SQLException{
-        PreparedStatement preparedStatement = ConnectionManager.con.prepareStatement(teacherRequest);
+        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(teacherRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();

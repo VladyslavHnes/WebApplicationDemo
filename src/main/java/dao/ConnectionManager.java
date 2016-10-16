@@ -14,7 +14,6 @@ package dao;
 
    public class ConnectionManager {
 
-      static Connection con;
       static String url;
       
       private static Connection getConnection(DAO dao){
@@ -26,14 +25,26 @@ package dao;
             String password = dao.getPassword();
             String url = "jdbc:mysql://" + address + ":" + port + "/"+ databaseName;
             Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = null;
             try{            	
-               con = DriverManager.getConnection(url, user, password);   
+               connection = DriverManager.getConnection(url, user, password);   
             }catch (SQLException ex){
                ex.printStackTrace();
             }
+            return connection;
         }catch(ClassNotFoundException e){
             System.out.println(e);
         }
-       return con;
+        return null;
+      }
+      
+      private static Connection getConnection(DAOSingletone daoSingletone) {
+          DAO dao = DAOSingletone.getInstance().getDAO();
+          return getConnection(dao);
+      }
+      
+      public static Connection getConnection() {
+          DAOSingletone daoSingletone = DAOSingletone.getInstance();
+          return getConnection(daoSingletone);
       }
     }
