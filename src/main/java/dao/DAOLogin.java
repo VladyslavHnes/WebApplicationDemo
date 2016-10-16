@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Student;
 import model.Teacher;
+import model.User;
 
 /**
  *
@@ -32,45 +33,36 @@ public class DAOLogin{
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
         queryResult.next();
-        String lastName = queryResult.getString("lastName");
-        if(queryResult != null){
-            return DAOLogin.getStudentObject(queryResult);
-        }else{
-            return null;
-        }
+        Student student = new Student();
+        DAOLogin.getUserObject(queryResult,student);
+        return student;
     }
     
-    //Get student object from result set that we generate when we send student request
-    public static Student getStudentObject(ResultSet resultSet)throws SQLException{
-        Student student = new Student();
-        student.setFirstName(resultSet.getString("firstName"));
-        student.setLastName(resultSet.getString("lastName"));
-        student.setLogin(resultSet.getString("login"));
-        student.setFirstName(resultSet.getString("password"));
-        return student;
+    //Get object from result set that we generate when we send student request
+    public static void getUserObject(ResultSet resultSet, User user)throws SQLException{
+        user.setFirstName(resultSet.getString("firstName"));
+        user.setLastName(resultSet.getString("lastName"));
+        user.setLogin(resultSet.getString("login"));
+        user.setPassword(resultSet.getString("password"));
     }
     
     //Check if there is a teacher with current login and password and return object
     //If there is no the teacher, then return null
     public static Teacher teacherRequest(String login, String password) throws SQLException{
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(teacherRequest);
+        Connection connection = ConnectionManager.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(teacherRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
-        if(queryResult != null){
-            return DAOLogin.getTeacherObject(queryResult);
-        }else{
-            return null;
-        }
+        queryResult.next();
+        Teacher teacher = DAOLogin.getTeacherObject(queryResult); 
+        return teacher;
     }
     
     //Get teacher object from result set that we generate when we send teacher request
     public static Teacher getTeacherObject(ResultSet resultSet)throws SQLException{
         Teacher teacher = new Teacher();
-        teacher.setFirstName(resultSet.getString("firstName"));
-        teacher.setLastName(resultSet.getString("lastName"));
-        teacher.setLogin(resultSet.getString("login"));
-        teacher.setFirstName(resultSet.getString("password"));
+        DAOLogin.getUserObject(resultSet, teacher);
         teacher.setSubject(resultSet.getString("subject"));
         return teacher;
     }

@@ -5,7 +5,6 @@
  */
 package dao;
 
-import java.sql.ResultSet;
 import model.Student;
 import model.Teacher;
 import org.junit.After;
@@ -17,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Admin
+ * @author vlad
  */
 public class DAOLoginTest {
     
@@ -49,20 +48,12 @@ public class DAOLoginTest {
         String login = "Sos";
         String password = "Pisos123";
         Student result = DAOLogin.studentRequest(login, password);
-        assertNotNull("Check if not null", result);
+        assertEquals("Sos", result.getLastName());
+        assertEquals("Pisos", result.getFirstName());
+        assertEquals("Sos", result.getLogin());
+        assertEquals("Pisos123", result.getPassword());
     }
 
-    /**
-     * Test of getStudentObject method, of class DAOLogin.
-     */
-    @Test
-    public void testGetStudentObject() throws Exception {
-        System.out.println("getStudentObject");
-        ResultSet resultSet = null;
-        Student expResult = null;
-        Student result = DAOLogin.getStudentObject(resultSet);
-        assertEquals(expResult, result);
-    }
 
     /**
      * Test of teacherRequest method, of class DAOLogin.
@@ -70,23 +61,14 @@ public class DAOLoginTest {
     @Test
     public void testTeacherRequest() throws Exception {
         System.out.println("teacherRequest");
-        String login = "";
-        String password = "";
-        Teacher expResult = null;
+        String login = "Plato";
+        String password = "Greek123";
         Teacher result = DAOLogin.teacherRequest(login, password);
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getTeacherObject method, of class DAOLogin.
-     */
-    @Test
-    public void testGetTeacherObject() throws Exception {
-        System.out.println("getTeacherObject");
-        ResultSet resultSet = null;
-        Teacher expResult = null;
-        Teacher result = DAOLogin.getTeacherObject(resultSet);
-        assertEquals(expResult, result);
-    }
-    
+        assertEquals("Plato", result.getLastName());
+        assertEquals("Greek", result.getFirstName());
+        assertEquals("Plato", result.getLogin());
+        assertEquals("Greek123", result.getPassword());
+        assertEquals("philosphy", result.getSubject());
+        
+    }    
 }
