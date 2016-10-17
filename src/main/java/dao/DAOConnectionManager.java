@@ -12,7 +12,7 @@ package dao;
  import java.sql.*;
 
 
-   public class ConnectionManager {
+   public class DAOConnectionManager {
 
       static String url;
       
