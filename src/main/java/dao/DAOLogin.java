@@ -18,17 +18,15 @@ import model.User;
  * @author Admin
  */
 public class DAOLogin{
-    final static String studentRequest = "SELECT * FROM students WHERE login = ? and password = ?";
-    final static String teacherRequest = "SELECT * FROM teachers WHERE login = ? and password = ?";
-    static ResultSet studentResSet;
-    static ResultSet teacherResSet;
+    final static String StudentSelectRequest = "SELECT * FROM students WHERE login = ? and password = ?";
+    final static String TeacherSelectRequest = "SELECT * FROM teachers WHERE login = ? and password = ?";
     
     
     //Check if there is a student with current login and password and return object
     //If there is no the student, then return null
     public static Student studentRequest(String login, String password) throws SQLException{
-        Connection connection = ConnectionManager.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(studentRequest);
+        Connection connection = DAOConnectionManager.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(StudentSelectRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
@@ -51,8 +49,8 @@ public class DAOLogin{
     //Check if there is a teacher with current login and password and return object
     //If there is no the teacher, then return null
     public static Teacher teacherRequest(String login, String password) throws SQLException{
-        Connection connection = ConnectionManager.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(teacherRequest);
+        Connection connection = DAOConnectionManager.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(TeacherSelectRequest);
         preparedStatement.setString(1, login);
         preparedStatement.setString(2, password);
         ResultSet queryResult = preparedStatement.executeQuery();
