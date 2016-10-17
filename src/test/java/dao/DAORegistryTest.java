@@ -31,7 +31,7 @@ public class DAORegistryTest {
         String firstName = "sad";
         String login = "Sossad";
         String password = "Pisos";
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = DAORegistry.regStudent(lastName, firstName, login, password);
         assertEquals(expResult, result);
     }
