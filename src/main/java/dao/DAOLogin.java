@@ -18,9 +18,9 @@ import model.User;
  * @author Admin
  */
 public class DAOLogin{
+    
     final static String StudentSelectRequest = "SELECT * FROM students WHERE login = ? and password = ?";
     final static String TeacherSelectRequest = "SELECT * FROM teachers WHERE login = ? and password = ?";
-    
     
     //Check if there is a student with current login and password and return object
     //If there is no the student, then return null
