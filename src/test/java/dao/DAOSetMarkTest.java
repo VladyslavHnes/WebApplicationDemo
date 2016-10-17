@@ -30,8 +30,8 @@ public class DAOSetMarkTest {
         String lastName = "Sos";
         String firstName = "Pisos";
         int expResult = 1;
-        DAOSetMark.setMark(subject, mark, lastName,firstName);
-        //assertEquals(expResult, result);
+        int result = DAOSetMark.setMark(subject, mark, lastName,firstName);
+        assertEquals(expResult, result);
     }
     
 }

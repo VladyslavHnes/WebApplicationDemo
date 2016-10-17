@@ -18,14 +18,14 @@ public class DAOSetMark {
     
     final static String SetMarkRequest = "UPDATE ? SET mark = ? WHERE lastName = ? AND firstName = ?";
     
-    public static void setMark(String subject, int mark, String lastName, String firstName) throws SQLException{
+    public static int setMark(String subject, int mark, String lastName, String firstName) throws SQLException{
         Connection connection = DAOConnectionManager.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(SetMarkRequest);
         preparedStatement.setString(1,subject);
         preparedStatement.setInt(2,mark);
         preparedStatement.setString(3,lastName);
         preparedStatement.setString(4,firstName);
-        preparedStatement.executeUpdate();
+        return preparedStatement.executeUpdate();
     }
     
 }
