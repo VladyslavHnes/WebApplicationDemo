@@ -52,4 +52,12 @@ class DAO{
         DAO dao = JAXB.unmarshal(file, DAO.class);
         return dao;
     }
+    
+    static DAO initializeDatabaseProperties(String pathToXML) throws JAXBException {
+        ClassLoader classLoader = DAO.class.getClassLoader();
+        File file = new File(classLoader.getResource(pathToXML).getFile());
+        JAXBContext jaxbContext = JAXBContext.newInstance(DAO.class);
+        DAO dao = JAXB.unmarshal(file, DAO.class);
+        return dao;
+    }
 }

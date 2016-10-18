@@ -21,7 +21,7 @@ public class DAOSetMarkTest {
     @Test
     public void testSetMark() throws Exception {
         System.out.println("setMark");
-        String subject = "math";
+        String subject = "Java";
         int mark = 2;
         String lastName = "Sos";
         String firstName = "Pisos";
