@@ -16,15 +16,16 @@ import java.sql.SQLException;
  */
 public class DAOSetMark {
     
-    final static String SetMarkRequest = "UPDATE ? SET mark = ? WHERE lastName = ? AND firstName = ?";
+     static String prepareSetMark(String subject){
+        return "UPDATE " + subject + " SET mark = ? WHERE lastName = ? AND firstName = ?";
+    }
     
     public static int setMark(String subject, int mark, String lastName, String firstName) throws SQLException{
         Connection connection = DAOConnectionManager.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(SetMarkRequest);
-        preparedStatement.setString(1,subject);
-        preparedStatement.setInt(2,mark);
-        preparedStatement.setString(3,lastName);
-        preparedStatement.setString(4,firstName);
+        PreparedStatement preparedStatement = connection.prepareStatement(prepareSetMark(subject));
+        preparedStatement.setInt(1,mark);
+        preparedStatement.setString(2,lastName);
+        preparedStatement.setString(3,firstName);
         return preparedStatement.executeUpdate();
     }
     
