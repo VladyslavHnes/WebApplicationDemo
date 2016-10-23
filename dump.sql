@@ -1,11 +1,8 @@
-DROP DATABASE IF EXISTS university;
-CREATE DATABASE university;
-USE university;
--- MySQL dump 10.13  Distrib 5.5.23, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: localhost    Database: university
 -- ------------------------------------------------------
--- Server version	5.5.23
+-- Server version	5.7.15-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,13 +16,13 @@ USE university;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `math`
+-- Table structure for table `DataStructures`
 --
 
-DROP TABLE IF EXISTS `math`;
+DROP TABLE IF EXISTS `DataStructures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `math` (
+CREATE TABLE `DataStructures` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `mark` int(11) NOT NULL,
   `lastName` varchar(100) NOT NULL,
@@ -35,23 +32,23 @@ CREATE TABLE `math` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `math`
+-- Dumping data for table `DataStructures`
 --
 
-LOCK TABLES `math` WRITE;
-/*!40000 ALTER TABLE `math` DISABLE KEYS */;
-INSERT INTO `math` VALUES (1,4,'Sos','Pisos'),(2,4,'Tvoy','Kurtec'),(3,4,'Mem','AboutCommunism');
-/*!40000 ALTER TABLE `math` ENABLE KEYS */;
+LOCK TABLES `DataStructures` WRITE;
+/*!40000 ALTER TABLE `DataStructures` DISABLE KEYS */;
+INSERT INTO `DataStructures` VALUES (1,4,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
+/*!40000 ALTER TABLE `DataStructures` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `philosophy`
+-- Table structure for table `Java`
 --
 
-DROP TABLE IF EXISTS `philosophy`;
+DROP TABLE IF EXISTS `Java`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `philosophy` (
+CREATE TABLE `Java` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `mark` int(11) NOT NULL,
   `lastName` varchar(100) NOT NULL,
@@ -61,38 +58,39 @@ CREATE TABLE `philosophy` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `philosophy`
+-- Dumping data for table `Java`
 --
 
-LOCK TABLES `philosophy` WRITE;
-/*!40000 ALTER TABLE `philosophy` DISABLE KEYS */;
-INSERT INTO `philosophy` VALUES (1,3,'Mem','AboutCommunism'),(2,3,'Sos','Pisos'),(3,3,'Tvoy','Kurtec');
-/*!40000 ALTER TABLE `philosophy` ENABLE KEYS */;
+LOCK TABLES `Java` WRITE;
+/*!40000 ALTER TABLE `Java` DISABLE KEYS */;
+INSERT INTO `Java` VALUES (1,5,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
+/*!40000 ALTER TABLE `Java` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `programming`
+-- Table structure for table `JavaScript`
 --
 
-DROP TABLE IF EXISTS `programming`;
+DROP TABLE IF EXISTS `JavaScript`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `programming` (
+CREATE TABLE `JavaScript` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `subject` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
+  `mark` int(11) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `programming`
+-- Dumping data for table `JavaScript`
 --
 
-LOCK TABLES `programming` WRITE;
-/*!40000 ALTER TABLE `programming` DISABLE KEYS */;
-/*!40000 ALTER TABLE `programming` ENABLE KEYS */;
+LOCK TABLES `JavaScript` WRITE;
+/*!40000 ALTER TABLE `JavaScript` DISABLE KEYS */;
+INSERT INTO `JavaScript` VALUES (1,4,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
+/*!40000 ALTER TABLE `JavaScript` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -109,7 +107,7 @@ CREATE TABLE `students` (
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +116,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'Sos','Pisos','Sos','Pisos123'),(2,'Tvoy','Kyrtec','Tvoy','Kyrtec123'),(3,'Mem','AboutCommunism','Mem','AboutCommunism123');
+INSERT INTO `students` VALUES (1,'Vlad','Hnes','Vlad','Hnes123'),(2,'Jack','Rich','Jack','Rich123'),(3,'John','Reynolds','John','Reynolds123'),(4,'Paul','Godric','Paul','Godric123'),(5,'Paul','Godric','Paul','Godric123');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +135,7 @@ CREATE TABLE `teachers` (
   `password` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +144,7 @@ CREATE TABLE `teachers` (
 
 LOCK TABLES `teachers` WRITE;
 /*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
-INSERT INTO `teachers` VALUES (1,'Plato','Grek','Plato','Grek123','philosophy'),(2,'Pascal','Pascal','Pascal','Pascal123','math');
+INSERT INTO `teachers` VALUES (1,'James','Gosling','James','Gosling123','Java'),(2,'Brendan','Eich','Breandan','Eich123','JavaScript'),(3,'Thomas','Cormen','Thomas','Cormen','DataStructures');
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -159,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-13  6:39:18
+-- Dump completed on 2016-10-23 21:49:31
