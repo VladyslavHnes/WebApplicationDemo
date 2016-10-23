@@ -26,13 +26,13 @@ public class DAOLoginTest {
     @Test
     public void testStudentRequest() throws Exception {
         System.out.println("studentRequest");
-        String login = "Sos";
-        String password = "Pisos123";
+        String login = "Vlad";
+        String password = "Hnes123";
         Student result = DAOLogin.studentRequest(login, password);
-        assertEquals("Sos", result.getLastName());
-        assertEquals("Pisos", result.getFirstName());
-        assertEquals("Sos", result.getLogin());
-        assertEquals("Pisos123", result.getPassword());
+        assertEquals("Vlad", result.getLastName());
+        assertEquals("Hnes", result.getFirstName());
+        assertEquals("Vlad", result.getLogin());
+        assertEquals("Hnes123", result.getPassword());
     }
 
 
@@ -42,14 +42,14 @@ public class DAOLoginTest {
     @Test
     public void testTeacherRequest() throws Exception {
         System.out.println("teacherRequest");
-        String login = "Plato";
-        String password = "Grek123";
+        String login = "James";
+        String password = "Gosling123";
         Teacher result = DAOLogin.teacherRequest(login, password);
-        assertEquals("Plato", result.getLastName());
-        assertEquals("Grek", result.getFirstName());
-        assertEquals("Plato", result.getLogin());
-        assertEquals("Grek123", result.getPassword());
-        assertEquals("philosophy", result.getSubject());
+        assertEquals("James", result.getLastName());
+        assertEquals("Gosling", result.getFirstName());
+        assertEquals("James", result.getLogin());
+        assertEquals("Gosling123", result.getPassword());
+        assertEquals("Java", result.getSubject());
         
     }    
 }

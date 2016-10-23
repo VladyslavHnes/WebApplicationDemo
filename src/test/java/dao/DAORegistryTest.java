@@ -22,10 +22,10 @@ public class DAORegistryTest {
     @Test
     public void testRegStudent() throws Exception {
         System.out.println("regStudent");
-        String lastName = "las";
-        String firstName = "sad";
-        String login = "Sossad";
-        String password = "Pisos";
+        String lastName = "Paul";
+        String firstName = "Godric";
+        String login = "Paul";
+        String password = "Godric123";
         boolean expResult = false;
         boolean result = DAORegistry.regStudent(lastName, firstName, login, password);
         assertEquals(expResult, result);
@@ -37,8 +37,8 @@ public class DAORegistryTest {
     @Test
     public void testIfUserExist() throws Exception {
         System.out.println("ifUserExist");
-        String login = "Sos";
-        String password = "Pisos123";
+        String login = "Vlad";
+        String password = "Hnes123";
         boolean expResult = true;
         boolean result = DAORegistry.ifUserExist(login, password);
         assertEquals(expResult, result);
