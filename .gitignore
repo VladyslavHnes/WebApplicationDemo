@@ -1,5 +1,5 @@
 /target/
 /nbproject/
 /.idea/
-/WebApplication.iml/
-/WebApplicationDemo.iml/
+/**/*.iml/
+
