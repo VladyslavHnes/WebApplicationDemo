@@ -5,7 +5,6 @@
  */
 package dao;
 
-import static dao.DAOLogin.StudentSelectRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,7 +13,9 @@ import java.sql.SQLException;
  *
  * @author vlad
  */
-public class DAOSetMark {
+public class DAOSetMark implements DAOInterface {
+
+    private DAOSetMark(){}
     
      static String prepareSetMark(String subject){
         return "UPDATE " + subject + " SET mark = ? WHERE lastName = ? AND firstName = ?";

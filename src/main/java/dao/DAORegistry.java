@@ -14,7 +14,9 @@ import java.sql.SQLException;
  *
  * @author vlad
  */
-public class DAORegistry {
+public class DAORegistry implements DAOInterface {
+
+    private DAORegistry(){}
     
     final static String StudentRegRequest = "INSERT INTO students(lastName,firstName,login,password) VALUES(?,?,?,?)";
     final static String StudentSelectRequest = "SELECT login FROM students WHERE login = ?";
