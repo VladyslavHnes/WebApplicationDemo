@@ -8,12 +8,12 @@
 
 <html>
 	<head>
-                                <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
 		<title>Login Page</title>
 	</head>
 
 	<body>
-		<form action="LoginController">
+		<form action="loginStudent">
 
 			Please enter your username 		
 			<input type="text" name="login"/><br>		
@@ -21,8 +21,11 @@
 			Please enter your password
 			<input type="text" name="password"/>
 			
-			<input type="submit" value="submit">			
+			<input type="submit" value="log in">
 		
+		</form>
+		<form action="signUpRedirectStudent">
+			<input type="submit" value="sign up">
 		</form>
 	</body>
 </html>
