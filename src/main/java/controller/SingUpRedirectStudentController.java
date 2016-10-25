@@ -13,7 +13,6 @@ public class SingUpRedirectStudentController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
         try {
-            System.out.println("S");
             response.sendRedirect("SignUpStudentPage.jsp"); //signed-up page
         }
         catch (Throwable theException) {
