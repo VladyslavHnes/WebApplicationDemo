@@ -5,11 +5,51 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
         <servlet>
-            <servlet-name>LogInController</servlet-name>
-            <servlet-class>controller.LogInController</servlet-class>
+            <servlet-name>LogInTeacherController</servlet-name>
+            <servlet-class>controller.LogInTeacherController</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>SignUpRedirectStudentController</servlet-name>
+            <servlet-class>controller.SingUpRedirectStudentController</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>SignUpStudentController</servlet-name>
+            <servlet-class>controller.SignUpStudentController</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>LogInStudentController</servlet-name>
+            <servlet-class>controller.LogInStudentController</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>LoginRedirectStudentController</servlet-name>
+            <servlet-class>controller.LoginRedirectStudentController</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>LoginRedirectTeacherController</servlet-name>
+            <servlet-class>controller.LogInRedirectTeacherController</servlet-class>
         </servlet>
         <servlet-mapping>
-           <servlet-name>LogInController</servlet-name>
-           <url-pattern>/login</url-pattern>
+             <servlet-name>LoginRedirectStudentController</servlet-name>
+             <url-pattern>/loginStudentredirect</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+             <servlet-name>SignUpRedirectStudentController</servlet-name>
+             <url-pattern>/signUpRedirectStudent</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+             <servlet-name>SignUpStudentController</servlet-name>
+             <url-pattern>/signUpStudent</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+             <servlet-name>LoginRedirectTeacherController</servlet-name>
+             <url-pattern>/loginTeacherredirect</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+           <servlet-name>LogInTeacherController</servlet-name>
+           <url-pattern>/loginTeacher</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+           <servlet-name>LogInStudentController</servlet-name>
+           <url-pattern>/loginStudent</url-pattern>
         </servlet-mapping>
 </web-app>
