@@ -18,8 +18,8 @@ public abstract class User {
         return firstName;
     }
 
-    public void setLastName(String firstName){
-        this.lastName = firstName;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
     public String getLastName(){
