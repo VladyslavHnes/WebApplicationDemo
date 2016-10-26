@@ -1,7 +1,6 @@
-package controller;
+package controller.teacher;
 
-import dao.DAOLogin;
-import model.Student;
+import dao.requests.DAOLogin;
 import model.Teacher;
 
 import javax.servlet.ServletException;
@@ -23,7 +22,7 @@ public class LogInTeacherController extends HttpServlet {
             if (teacher != null) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("currentSessionUser",teacher);
-                response.sendRedirect("userLogged.jsp"); //logged-in page
+                response.sendRedirect("UserLogged.jsp"); //logged-in page
             }
             else
                 response.sendRedirect("ErrorPage.jsp"); //error page
