@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.requests;
+
+import dao.DAOConnectionManager;
+import dao.DAOInterface;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +20,7 @@ public class DAOSetMark implements DAOInterface {
 
     private DAOSetMark(){}
     
-     static String prepareSetMark(String subject){
+    private static String prepareSetMark(String subject){
         return "UPDATE " + subject + " SET mark = ? WHERE lastName = ? AND firstName = ?";
     }
     
