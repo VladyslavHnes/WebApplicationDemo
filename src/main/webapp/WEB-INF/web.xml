@@ -6,31 +6,39 @@
 
         <servlet>
             <servlet-name>LogInTeacherController</servlet-name>
-            <servlet-class>controller.LogInTeacherController</servlet-class>
+            <servlet-class>controller.teacher.LogInTeacherController</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>SignUpRedirectStudentController</servlet-name>
-            <servlet-class>controller.SingUpRedirectStudentController</servlet-class>
+            <servlet-class>controller.student.SingUpRedirectStudentController</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>SignUpStudentController</servlet-name>
-            <servlet-class>controller.SignUpStudentController</servlet-class>
+            <servlet-class>controller.student.SignUpStudentController</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>LogInStudentController</servlet-name>
-            <servlet-class>controller.LogInStudentController</servlet-class>
+            <servlet-class>controller.student.LogInStudentController</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>LoginRedirectStudentController</servlet-name>
-            <servlet-class>controller.LoginRedirectStudentController</servlet-class>
+            <servlet-class>controller.student.LoginRedirectStudentController</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>LoginRedirectTeacherController</servlet-name>
-            <servlet-class>controller.LogInRedirectTeacherController</servlet-class>
+            <servlet-class>controller.teacher.LogInRedirectTeacherController</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>SubscribeController</servlet-name>
+            <servlet-class>controller.student.SubscribeStudentController</servlet-class>
+         </servlet>
         <servlet-mapping>
              <servlet-name>LoginRedirectStudentController</servlet-name>
              <url-pattern>/loginStudentredirect</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+             <servlet-name>SubscribeController</servlet-name>
+             <url-pattern>/subscribe</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
              <servlet-name>SignUpRedirectStudentController</servlet-name>
