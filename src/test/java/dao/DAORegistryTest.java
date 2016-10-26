@@ -5,6 +5,7 @@
  */
 package dao;
 
+import dao.requests.DAORegistry;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
