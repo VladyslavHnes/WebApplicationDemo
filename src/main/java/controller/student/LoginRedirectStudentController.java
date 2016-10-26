@@ -1,7 +1,4 @@
-package controller;
-
-import dao.DAOLogin;
-import model.Student;
+package controller.student;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

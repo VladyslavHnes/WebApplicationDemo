@@ -1,9 +1,6 @@
-package controller;
+package controller.student;
 
-import dao.DAOLogin;
-import dao.DAORegistry;
 import model.Student;
-import model.Teacher;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,24 +11,29 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by vlad on 26.10.16.
  */
-public class SignUpStudentController extends HttpServlet {
+public class SubscribeStudentController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, java.io.IOException {
+            throws ServletException, java.io.IOException{
         try {
-            String lastname = request.getParameter("lastname");
-            String firstname = request.getParameter("firstname");
+            String lastName = request.getParameter("lastName");
+            String firstName = request.getParameter("firstName");
             String login = request.getParameter("login");
             String password = request.getParameter("password");
+            Student student = new Student();
+            student.setLastName(lastName);
+            student.setFirstName(firstName);
+            student.setLogin(login);
+            student.setPassword(password);
             HttpSession session = request.getSession(true);
-            boolean flag = DAORegistry.regStudent(lastname, firstname,login,password);
-            if (flag) {
-                response.sendRedirect("userLogged.jsp"); //logged-in page
-            }
-            else
-                response.sendRedirect("UserAlreadyExist.jsp"); //error page
+            session.setAttribute("student", student);
+
         }
         catch (Throwable theException) {
             System.out.println(theException);
         }
+
+
     }
+
+
 }
