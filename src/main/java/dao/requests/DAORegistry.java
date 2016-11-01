@@ -24,7 +24,7 @@ public class DAORegistry implements DAOInterface {
     final static String StudentRegRequest = "INSERT INTO students(firstName,lastName,login,password) VALUES(?,?,?,?)";
     final static String StudentSelectRequest = "SELECT login FROM students WHERE login = ?";
     
-    public static boolean regStudent(String lastName,String firstName,String login, String password) throws SQLException{
+    public static boolean regStudent(String firstName,String lastName,String login, String password) throws SQLException{
         Connection connection = DAOConnectionManager.getConnection();
         if(!DAORegistry.ifUserExist(login, password)){
             PreparedStatement preparedStatement = connection.prepareStatement(StudentRegRequest);
