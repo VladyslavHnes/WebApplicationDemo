@@ -7,17 +7,17 @@
     <title>Subscribe page</title>
     <style type="text/css">
         TABLE {
-            width: 300px; /* Ширина таблицы */
-            border-collapse: collapse; /* Убираем двойные линии между ячейками */
+            width: 300px;
+            border-collapse: collapse;
             margin: auto;
         }
         TD, TH {
-            padding: 3px; /* Поля вокруг содержимого таблицы */
-            border: 1px solid black; /* Параметры рамки */
+            padding: 3px;
+            border: 1px solid black;
             text-align: center;
         }
         TH {
-            background: #b0e0e6; /* Цвет фона */
+            background: #b0e0e6;
         }
     </style>
     <style>
@@ -32,25 +32,36 @@
 <body>
 <div class="text">
     <p>Welcome to our University, ${student.firstName}!
-        <br/><br/>Please, choose your courses. <br> Type "+" at the fields of admired courses</p>
+        <br/><br/>Please, choose your courses. <br> Set mark at the fields of admired courses</p>
 </div>
-<br><br><br>
-<form action="subscribe" method="post">
-    <table>
-        <tr>
-            <th>Enroll</th>
-            <th>Course</th>
-            <th>Instructor</th>
-        </tr>
+<br><br>
+<!--form action="subscribe" method="post"!-->
+<table>
+    <tr>
+        <th>Enroll</th>
+        <th>Course</th>
+        <th>Teacher</th>
+    </tr>
+    <form action ="subscribe" method="get">
         <c:forEach items="${courses}" var="course" varStatus="count">
             <tr>
-                <td><input type="text" name="${course.nameOfCourse}"  style="text-align:center; vertical-align:middle;"></td>
-                <td>${course.nameOfCourse}</td>
-                <td>${course.teacherLastName}</td>
+                <td>
+                    <input type = "checkbox" name = "subscribeBox" value=${course.subject}
+                    <c:if test="${course.subject}">checked="checked"</c:if>>${course.subject}&nbsp
+                </td>
+                <td>${course.subject}</td>
+                <td>${course.firstNameOfTeacher} ${course.lastNameOfTeacher}</td>
             </tr>
         </c:forEach>
-    </table>
-    <center><input type="submit" name="subs" value="start"></center>
-</form>
+            <input type="submit" value="start">
+    </form>
+    <c:if test="${isFirst == false}">
+        <script>
+            alert('sos pisos');
+        </script>
+    </c:if>>
+</table>
+<!--/form!-->
+<br><br>
 </body>
 </html>
