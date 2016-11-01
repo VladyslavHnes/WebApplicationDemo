@@ -39,7 +39,7 @@ public class SignUpStudentController extends HttpServlet {
                 response.sendRedirect("SubscribeCoursePage.jsp"); //logged-in page
             }
             else
-                response.sendRedirect("ErrorPage.jsp"); //error page
+                response.sendRedirect("UserAlreadyExists.jsp"); //error page
         }
         catch (Throwable theException) {
             System.out.println(theException);
