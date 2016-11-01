@@ -35,33 +35,34 @@
         <br/><br/>Please, choose your courses. <br> Set mark at the fields of admired courses</p>
 </div>
 <br><br>
-<!--form action="subscribe" method="post"!-->
-<table>
-    <tr>
-        <th>Enroll</th>
-        <th>Course</th>
-        <th>Teacher</th>
-    </tr>
-    <form action ="subscribe" method="get">
+<form action ="subscribe" method="get">
+    <table>
+        <tr>
+            <th>Enroll</th>
+            <th>Course</th>
+            <th>Teacher</th>
+        </tr>
         <c:forEach items="${courses}" var="course" varStatus="count">
             <tr>
                 <td>
                     <input type = "checkbox" name = "subscribeBox" value=${course.subject}
-                    <c:if test="${course.subject}">checked="checked"</c:if>>${course.subject}&nbsp
+                            <c:if test="${course.subject}">checked="checked"</c:if>>${course.subject}&nbsp
                 </td>
                 <td>${course.subject}</td>
                 <td>${course.firstNameOfTeacher} ${course.lastNameOfTeacher}</td>
             </tr>
         </c:forEach>
-            <input type="submit" value="start">
-    </form>
-    <c:if test="${isFirst == false}">
-        <script>
-            alert('sos pisos');
-        </script>
-    </c:if>>
-</table>
-<!--/form!-->
+    </table>
+    <br>
+    <div align="center">
+        <input type="submit" value="start">
+    </div>
+</form>
+<c:if test="${isFirst == false}">
+    <script>
+        alert('Please, mark subjects that you want to learn!');
+    </script>
+</c:if>
 <br><br>
 </body>
 </html>
