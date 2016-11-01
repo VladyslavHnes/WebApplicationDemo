@@ -29,12 +29,14 @@ public class LogInStudentController extends HttpServlet {
             ArrayList<Course> courses = DAOShowCourses.getCourses();
             HttpSession session = request.getSession(true);
             session.setAttribute("courses",courses);
+
             ArrayList<Integer> marks = new ArrayList<>();
             int javaMark = DAOGetMark.getMark("Java",firstName,lastName);
             marks.add(javaMark);
             int javaScriptMark = DAOGetMark.getMark("JavaScript",firstName,lastName);
             marks.add(javaScriptMark);
             int dataStructuresMark = DAOGetMark.getMark("DataStructures",firstName,lastName);
+
             marks.add(dataStructuresMark);
             if (student != null) {
                 session.setAttribute("marks",marks);
