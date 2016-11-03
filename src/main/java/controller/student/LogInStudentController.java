@@ -24,27 +24,35 @@ public class LogInStudentController extends HttpServlet {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
             Student student = DAOLogin.studentRequest(login, password);
-            String firstName = student.getFirstName();
-            String lastName = student.getLastName();
+
+
+
             ArrayList<Course> courses = DAOShowCourses.getCourses();
             HttpSession session = request.getSession(true);
             session.setAttribute("courses",courses);
 
-            ArrayList<Integer> marks = new ArrayList<>();
-            int javaMark = DAOGetMark.getMark("Java",firstName,lastName);
-            marks.add(javaMark);
-            int javaScriptMark = DAOGetMark.getMark("JavaScript",firstName,lastName);
-            marks.add(javaScriptMark);
-            int dataStructuresMark = DAOGetMark.getMark("DataStructures",firstName,lastName);
 
-            marks.add(dataStructuresMark);
             if (student != null) {
+                String imageURL = student.getImageURL();
+                System.out.println(imageURL);
+                session.setAttribute("imageURL",imageURL);
+                String firstName = student.getFirstName();
+                String lastName = student.getLastName();
+                ArrayList<Integer> marks = new ArrayList<>();
+                int javaMark = DAOGetMark.getMark("Java",firstName,lastName);
+                marks.add(javaMark);
+                int javaScriptMark = DAOGetMark.getMark("JavaScript",firstName,lastName);
+                marks.add(javaScriptMark);
+                int dataStructuresMark = DAOGetMark.getMark("DataStructures",firstName,lastName);
+                marks.add(dataStructuresMark);
                 session.setAttribute("marks",marks);
                 session.setAttribute("student",student);
                 response.sendRedirect("StudentProfilePage.jsp"); //logged-in page
             }
-            else
-                response.sendRedirect("ErrorPage.jsp"); //error page
+            else {
+                session.setAttribute("wrongLoginOrPassword",false);
+                response.sendRedirect("LogInStudentPage.jsp");
+            }
         }
         catch (Throwable theException) {
             System.out.println(theException);
