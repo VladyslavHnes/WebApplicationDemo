@@ -50,6 +50,7 @@ public final class DAOLogin implements DAOInterface {
         user.setLastName(resultSet.getString("lastName"));
         user.setLogin(resultSet.getString("login"));
         user.setPassword(resultSet.getString("password"));
+        user.setImageURL(resultSet.getString("imageURL"));
     }
     
     //Check if there is a teacher with current login and password and return object
