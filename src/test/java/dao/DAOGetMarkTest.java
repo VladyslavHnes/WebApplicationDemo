@@ -13,6 +13,13 @@ import static org.junit.Assert.*;
 public class DAOGetMarkTest {
 
     @Test
+    public void getMarksTest() throws SQLException {
+        String subject = "Java";
+        Integer result = 5;
+        assertEquals(result, DAOGetMark.getMarks(subject).get(0));
+    }
+
+    @Test
     public void getMarkTest() throws SQLException {
         String subject = "Java";
         String firstName = "Vlad";
