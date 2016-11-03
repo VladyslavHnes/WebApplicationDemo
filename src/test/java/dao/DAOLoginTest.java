@@ -26,10 +26,11 @@ public class DAOLoginTest {
         String login = "Vlad";
         String password = "Hnes123";
         Student result = DAOLogin.studentRequest(login, password);
-        assertEquals("Vlad", result.getLastName());
-        assertEquals("Hnes", result.getFirstName());
+        assertEquals("Vlad", result.getFirstName());
+        assertEquals("Hnes", result.getLastName());
         assertEquals("Vlad", result.getLogin());
         assertEquals("Hnes123", result.getPassword());
+        assertEquals("https://ih1.redbubble.net/image.175848241.2112/flat,800x800,075,f.jpg",result.getImageURL());
     }
 
 
@@ -42,11 +43,11 @@ public class DAOLoginTest {
         String login = "James";
         String password = "Gosling123";
         Teacher result = DAOLogin.teacherRequest(login, password);
-        assertEquals("James", result.getLastName());
-        assertEquals("Gosling", result.getFirstName());
+        assertEquals("James", result.getFirstName());
+        assertEquals("Gosling", result.getLastName());
         assertEquals("James", result.getLogin());
         assertEquals("Gosling123", result.getPassword());
         assertEquals("Java", result.getSubject());
-        
+        assertEquals("http://www.tecmint.com/wp-content/uploads/2013/08/James-Gosling.jpeg",result.getImageURL());
     }    
 }
