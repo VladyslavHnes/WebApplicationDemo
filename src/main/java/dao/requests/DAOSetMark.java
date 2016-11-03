@@ -24,7 +24,7 @@ public class DAOSetMark implements DAOInterface {
         return "UPDATE " + subject + " SET mark = ? WHERE lastName = ? AND firstName = ?";
     }
     
-    public static int setMark(String subject, int mark, String lastName, String firstName) throws SQLException{
+    public static int setMark(String subject, int mark, String firstName, String lastName) throws SQLException{
         Connection connection = DAOConnectionManager.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(prepareSetMark(subject));
         preparedStatement.setInt(1,mark);
