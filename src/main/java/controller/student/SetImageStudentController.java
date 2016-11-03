@@ -18,7 +18,7 @@ public class SetImageStudentController extends HttpServlet {
         HttpSession session = request.getSession(true);
         String imageURL = request.getParameter("imageURL");
         System.out.println(imageURL);
-        Student student = new Student();
+        Student student = (Student) session.getAttribute("student");
         String firstName = student.getFirstName();
         String lastName = student.getLastName();
         try {
