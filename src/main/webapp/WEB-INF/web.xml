@@ -4,13 +4,18 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
+
         <servlet>
             <servlet-name>LogInTeacherController</servlet-name>
             <servlet-class>controller.teacher.LogInTeacherController</servlet-class>
         </servlet>
         <servlet>
+            <servlet-name>SetImageStudentController</servlet-name>
+            <servlet-class>controller.student.SetImageStudentController</servlet-class>
+        </servlet>
+        <servlet>
             <servlet-name>SignUpRedirectStudentController</servlet-name>
-            <servlet-class>controller.student.SingUpRedirectStudentController</servlet-class>
+            <servlet-class>controller.student.SignUpRedirectStudentController</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>SignUpStudentController</servlet-name>
@@ -29,12 +34,32 @@
             <servlet-class>controller.teacher.LogInRedirectTeacherController</servlet-class>
         </servlet>
         <servlet>
+            <servlet-name>SetMarkController</servlet-name>
+            <servlet-class>controller.teacher.SetMarkController</servlet-class>
+        </servlet>
+        <servlet>
             <servlet-name>SubscribeController</servlet-name>
             <servlet-class>controller.student.SubscribeStudentController</servlet-class>
-         </servlet>
+        </servlet>
+        <servlet>
+            <servlet-name>SetImageTeacherController</servlet-name>
+            <servlet-class>controller.teacher.SetImageTeacherController</servlet-class>
+        </servlet>
+        <servlet-mapping>
+             <servlet-name>SetImageTeacherController</servlet-name>
+             <url-pattern>/setImageTeacher</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
              <servlet-name>LoginRedirectStudentController</servlet-name>
              <url-pattern>/loginStudentredirect</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+             <servlet-name>SetImageStudentController</servlet-name>
+             <url-pattern>/setImage</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+             <servlet-name>SetMarkController</servlet-name>
+             <url-pattern>/setMark</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
              <servlet-name>SubscribeController</servlet-name>
