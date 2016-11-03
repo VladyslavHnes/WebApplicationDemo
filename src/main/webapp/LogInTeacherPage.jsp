@@ -1,4 +1,5 @@
-<%@ page language="java" 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java"
     contentType="text/html; charset=windows-1256"
     pageEncoding="windows-1256"
 %>
@@ -23,5 +24,10 @@
 			
 			<input type="submit" value="sign in">
 		</form>
+		<c:if test="${wrongLoginOrPassword == false}">
+			<script>
+				alert('Wrong login or password');
+			</script>
+		</c:if>
 	</body>
 </html>

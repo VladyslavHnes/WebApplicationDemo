@@ -26,7 +26,6 @@
 
     Please enter your password
     <input type="text" name="password"/><br>
-
     <input type="submit" value="sign up">
 
 </form>
