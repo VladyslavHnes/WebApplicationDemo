@@ -1,3 +1,5 @@
+CREATE DATABASE university;
+USE university;
 -- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: localhost    Database: university
@@ -25,8 +27,8 @@ DROP TABLE IF EXISTS `DataStructures`;
 CREATE TABLE `DataStructures` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `mark` int(11) NOT NULL,
-  `lastName` varchar(100) NOT NULL,
   `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -51,8 +53,8 @@ DROP TABLE IF EXISTS `Java`;
 CREATE TABLE `Java` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `mark` int(11) NOT NULL,
-  `lastName` varchar(100) NOT NULL,
   `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -77,8 +79,8 @@ DROP TABLE IF EXISTS `JavaScript`;
 CREATE TABLE `JavaScript` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `mark` int(11) NOT NULL,
-  `lastName` varchar(100) NOT NULL,
   `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -102,10 +104,11 @@ DROP TABLE IF EXISTS `students`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `students` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `lastName` varchar(255) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `imageURL` varchar(255) DEFAULT 'https://ih1.redbubble.net/image.175848241.2112/flat,800x800,075,f.jpg',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -116,7 +119,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'Vlad','Hnes','Vlad','Hnes123'),(2,'Jack','Rich','Jack','Rich123'),(3,'John','Reynolds','John','Reynolds123'),(4,'Paul','Godric','Paul','Godric123'),(5,'Paul','Godric','Paul','Godric123');
+INSERT INTO `students` (ID,firstName,lastName,login,password) VALUES (1,'Vlad','Hnes','Vlad','Hnes123'),(2,'Jack','Rich','Jack','Rich123'),(3,'John','Reynolds','John','Reynolds123'),(4,'Paul','Godric','Paul','Godric123'),(5,'Paul','Godric','Paul','Godric123');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,11 +132,12 @@ DROP TABLE IF EXISTS `teachers`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teachers` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `lastName` varchar(255) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
+  `imageURL` varchar(255) DEFAULT 'http://arhivach.org/storage/4/34/4346bfa65d3f8ef55b293c752c3c2dc0.jpg',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -144,7 +148,7 @@ CREATE TABLE `teachers` (
 
 LOCK TABLES `teachers` WRITE;
 /*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
-INSERT INTO `teachers` VALUES (1,'James','Gosling','James','Gosling123','Java'),(2,'Brendan','Eich','Breandan','Eich123','JavaScript'),(3,'Thomas','Cormen','Thomas','Cormen','DataStructures');
+INSERT INTO `teachers` (ID,firstName,lastName,login,password,subject) VALUES (1,'James','Gosling','James','Gosling123','Java'),(2,'Brendan','Eich','Breandan','Eich123','JavaScript'),(3,'Thomas','Cormen','Thomas','Cormen123','DataStructures');
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -157,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-23 21:49:31
+-- Dump completed on 2016-10-23 21:48:57
