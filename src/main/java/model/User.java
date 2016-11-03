@@ -9,6 +9,15 @@ public abstract class User {
     private String lastName;
     private String login;
     private String password;
+    private String imageURL;
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public void setFirstName(String firstName){
         this.firstName = firstName;
