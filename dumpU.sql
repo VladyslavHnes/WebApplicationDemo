@@ -25,10 +25,11 @@ DROP TABLE IF EXISTS `DataStructures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `DataStructures` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(20) NOT NULL AUTO_INCREMENT,
   `mark` int(11) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
+  `backgroundImageURL` varchar(255) DEFAULT 'http://richardkho.com/content/images/2015/03/Blog-Drawings---7.jpg',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +40,7 @@ CREATE TABLE `DataStructures` (
 
 LOCK TABLES `DataStructures` WRITE;
 /*!40000 ALTER TABLE `DataStructures` DISABLE KEYS */;
-INSERT INTO `DataStructures` VALUES (1,4,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
+INSERT INTO `DataStructures` (ID,mark,firstName,lastName) VALUES (1,4,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
 /*!40000 ALTER TABLE `DataStructures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,6 +56,7 @@ CREATE TABLE `Java` (
   `mark` int(11) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
+  `backgroundImageURL` varchar(255) DEFAULT 'https://xakep.ru/wp-content/uploads/2016/02/JAVA.jpg',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -65,7 +67,7 @@ CREATE TABLE `Java` (
 
 LOCK TABLES `Java` WRITE;
 /*!40000 ALTER TABLE `Java` DISABLE KEYS */;
-INSERT INTO `Java` VALUES (1,5,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
+INSERT INTO `Java` (ID,mark,firstName,lastName) VALUES (1,5,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
 /*!40000 ALTER TABLE `Java` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,6 +83,7 @@ CREATE TABLE `JavaScript` (
   `mark` int(11) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
+  `backgroundImageURL` varchar(255) DEFAULT 'https://blog.zingchart.com/content/images/2016/06/javscript-1.png',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -91,7 +94,7 @@ CREATE TABLE `JavaScript` (
 
 LOCK TABLES `JavaScript` WRITE;
 /*!40000 ALTER TABLE `JavaScript` DISABLE KEYS */;
-INSERT INTO `JavaScript` VALUES (1,4,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
+INSERT INTO `JavaScript` (ID,mark,firstName,lastName) VALUES (1,4,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
 /*!40000 ALTER TABLE `JavaScript` ENABLE KEYS */;
 UNLOCK TABLES;
 
