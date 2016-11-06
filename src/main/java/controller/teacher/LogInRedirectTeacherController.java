@@ -11,11 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogInRedirectTeacherController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
-        try {
-            response.sendRedirect("LogInTeacherPage.jsp"); //logged-in page
-        }
-        catch (Throwable theException) {
-            System.out.println(theException);
-        }
+
+        response.sendRedirect("LogInTeacherPage.jsp");
     }
 }

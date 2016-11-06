@@ -12,11 +12,6 @@ public class SignUpRedirectStudentController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
-        try {
-            response.sendRedirect("SignUpStudentPage.jsp"); //signed-up page
-        }
-        catch (Throwable theException) {
-            System.out.println(theException);
-        }
+        response.sendRedirect("SignUpStudentPage.jsp");
     }
 }

@@ -13,11 +13,6 @@ public class LoginRedirectStudentController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
-        try {
-            response.sendRedirect("LogInStudentPage.jsp"); //logged-in page
-        }
-        catch (Throwable theException) {
-            System.out.println(theException);
-        }
+        response.sendRedirect("LogInStudentPage.jsp");
     }
 }
