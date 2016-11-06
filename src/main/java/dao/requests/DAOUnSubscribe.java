@@ -1,7 +1,9 @@
 package dao.requests;
 
+import controller.teacher.SetImageTeacherController;
 import dao.DAOConnectionManager;
 import dao.DAOInterface;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,12 +20,17 @@ public class DAOUnSubscribe implements DAOInterface {
         return "DELETE FROM " + subject + " WHERE lastname = ? AND firstname = ?";
     }
 
-    public static int unSubscribe(String subject,String lastName, String firstName)
-            throws SQLException {
+    public static int unSubscribe(String subject,String lastName, String firstName) {
         Connection connection = DAOConnectionManager.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(prepareUnSubscribeRequest(subject));
-        preparedStatement.setString(1,lastName);
-        preparedStatement.setString(2,firstName);
-        return preparedStatement.executeUpdate();
+        Logger logger = Logger.getLogger(SetImageTeacherController.class);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(prepareUnSubscribeRequest(subject))) {
+            preparedStatement.setString(1, lastName);
+            preparedStatement.setString(2, firstName);
+            preparedStatement.close();
+            return preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            logger.info(e);
+            return -1;
+        }
     }
 }
