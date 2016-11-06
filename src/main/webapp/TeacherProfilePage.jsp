@@ -24,8 +24,10 @@
         .text {
             text-align:  center;
         }
-        .submit{
-            text-align:  center;
+        body {
+            background-image: url("");
+            background-repeat: no-repeat;
+            background-size: 100%;
         }
     </style>
 </head>

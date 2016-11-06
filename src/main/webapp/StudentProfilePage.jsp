@@ -20,13 +20,13 @@
             background: #b0e0e6;
         }
     </style>
+
     <style>
         .text {
             text-align:  center;
         }
-        .submit{
-            text-align:  center;
-        }
+
+
     </style>
 </head>
 <body>
