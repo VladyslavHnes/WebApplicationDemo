@@ -21,13 +21,13 @@ class DAO{
     public String user;
     @XmlElement
     public String password;
-    
+
     DAO() {}
-    
+
     public String getAddress() {
         return address;
     }
-                                                                                                                                                                                                                            
+
     public int getPort() {
         return port;
     }
@@ -35,7 +35,7 @@ class DAO{
     public String getDatabaseName() {
         return databaseName;
     }
-    
+
     public String getUser() {
         return user;
     }
@@ -43,7 +43,7 @@ class DAO{
     public String getPassword() {
         return password;
     }
-    
+
 
     static DAO initializeDatabaseProperties() throws JAXBException {
         ClassLoader classLoader = DAO.class.getClassLoader();
@@ -52,7 +52,7 @@ class DAO{
         DAO dao = JAXB.unmarshal(file, DAO.class);
         return dao;
     }
-    
+
     static DAO initializeDatabaseProperties(String pathToXML) throws JAXBException {
         ClassLoader classLoader = DAO.class.getClassLoader();
         File file = new File(classLoader.getResource(pathToXML).getFile());
