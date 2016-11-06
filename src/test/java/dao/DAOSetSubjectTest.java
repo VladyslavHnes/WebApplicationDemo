@@ -4,6 +4,8 @@ import dao.requests.DAOSetMark;
 import dao.requests.DAOSetSubject;
 import org.junit.Test;
 
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -11,8 +13,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class DAOSetSubjectTest {
     @Test
-    public void testSetSubject() throws Exception {
-        System.out.println("setSubject");
+    public void testSetSubject() throws SQLException {
         String subject = "Java";
         String lastName = "Ruslan";
         String firstName = "Vdovichenko";

@@ -7,6 +7,9 @@ package dao;
 
 import dao.requests.DAOSetMark;
 import org.junit.Test;
+
+import java.sql.SQLException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -20,8 +23,7 @@ public class DAOSetMarkTest {
      * Test of setMark method, of class DAOSetMark.
      */
     @Test
-    public void testSetMark() throws Exception {
-        System.out.println("setMark");
+    public void testSetMark() throws SQLException {
         String subject = "Java";
         int mark = 5;
         String lastName = "Vlad";

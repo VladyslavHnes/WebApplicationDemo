@@ -4,6 +4,10 @@ package dao;
 import dao.requests.DAOShowCourses;
 import model.Course;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
 import static org.junit.Assert.*;
 
 
@@ -13,7 +17,7 @@ import static org.junit.Assert.*;
 public class DAOShowCoursesTest {
 
     @Test
-    public void showCoursesTest() throws Exception {
+    public void showCoursesTest() throws SQLException,IOException {
         Course java = new Course();
         java.setSubject("Java");
         java.setFirstNameOfTeacher("James");

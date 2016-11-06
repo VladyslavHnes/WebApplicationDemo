@@ -7,6 +7,9 @@ package dao;
 
 import dao.requests.DAORegistry;
 import org.junit.Test;
+
+import java.sql.SQLException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -21,8 +24,7 @@ public class DAORegistryTest {
      * Test of regStudent method, of class DAORegistry.
      */
     @Test
-    public void testRegStudent() throws Exception {
-        System.out.println("regStudent");
+    public void testRegStudent() throws SQLException {
         String lastName = "Paul";
         String firstName = "Godric";
         String login = "Paul";
@@ -36,13 +38,11 @@ public class DAORegistryTest {
      * Test of ifUserExist method, of class DAORegistry.
      */
     @Test
-    public void testIfUserExist() throws Exception {
-        System.out.println("ifUserExist");
+    public void testIfUserExist() throws SQLException {
         String login = "Vlad";
         String password = "Hnes123";
-        boolean expResult = true;
         boolean result = DAORegistry.ifUserExist(login, password);
-        assertEquals(expResult, result);
+        assertEquals(true, result);
     }
     
 }
