@@ -12,15 +12,15 @@ import javax.xml.bind.JAXB;
 class DAO{
 
     @XmlElement
-    public String address;
+    private String address;
     @XmlElement
-    public int port;
+    private int port;
     @XmlElement
-    public String databaseName;
+    private String databaseName;
     @XmlElement
-    public String user;
+    private String user;
     @XmlElement
-    public String password;
+    private String password;
 
     DAO() {}
 
