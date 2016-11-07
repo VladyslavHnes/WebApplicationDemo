@@ -1,8 +1,13 @@
 package dao;
 
+import controller.teacher.SetImageTeacherController;
+import org.apache.log4j.Logger;
+
 import javax.xml.bind.JAXBException;
 
 public class DAOSingletone {
+
+    private static Logger logger = Logger.getLogger(SetImageTeacherController.class);
 
     private static DAO dao = new DAO();
     private static DAO daoTest = new DAO();
@@ -11,7 +16,7 @@ public class DAOSingletone {
         try {
             dao = DAO.initializeDatabaseProperties();
         } catch (JAXBException ex) {
-            ex.toString();
+            logger.info(ex);
         }
     }
 
