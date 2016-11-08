@@ -29,8 +29,7 @@ public class DAOConnectionManager {
             String password = dao.getPassword();
             String url = "jdbc:mysql://" + address + ":" + port + "/"+ databaseName;
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = null;
-            connection = DriverManager.getConnection(url, user, password);
+            Connection connection = DriverManager.getConnection(url, user, password);
             return connection;
         }catch(ClassNotFoundException | SQLException e){
             logger.info(e);
