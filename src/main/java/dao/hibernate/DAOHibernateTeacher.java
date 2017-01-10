@@ -5,6 +5,7 @@ import model.Teacher;
 import model.User;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -14,7 +15,21 @@ import java.util.List;
  * Created by vlad on 10.11.16.
  */
 public class DAOHibernateTeacher {
+
     private Session session = null;
+    private String loginQuery = "from Teacher AS teacher where teacher.login =:login " +
+            "AND teacher.password =:password";
+
+    public DAOHibernateTeacher(){
+        this.session = DAOHibernateUtil.getSessionFactory().openSession();
+    }
+
+    public Teacher login(String login,String password) {
+        Query query = session.createQuery(loginQuery);
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return (Teacher) query.getSingleResult();
+    }
 
     public void updateTeacher(Teacher teacher) throws SQLException {
         try{
