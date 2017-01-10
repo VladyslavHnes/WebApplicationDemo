@@ -9,5 +9,6 @@ import java.lang.annotation.RetentionPolicy;
  * Created by vlad on 15.11.16.
  */
 @Entity
-public class Java {
+public class Java extends Course {
+
 }

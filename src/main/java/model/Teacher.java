@@ -6,7 +6,6 @@ import javax.persistence.*;
  * Created by vlad on 27.08.2016.
  */
 @Entity
-@DiscriminatorValue(value="teacherUser")
 @Table(name = "teachers")
 public class Teacher extends User{
     @Column(name = "subject")
