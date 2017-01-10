@@ -1,13 +1,13 @@
 package dao.hibernate;
 
-import controller.teacher.SetImageTeacherController;
 import model.Student;
 import org.apache.log4j.Logger;
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.NoResultException;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -42,7 +42,7 @@ public class DAOHibernateStudent implements DAOHibernateInterface {
         query.setParameter("login",login);
         try{
             Student student = (Student)query.getSingleResult();
-        }catch (NoResultException e){
+        }catch (NoResultException | NonUniqueResultException e){
             logger.info(e);
             return false;
         }
@@ -51,20 +51,16 @@ public class DAOHibernateStudent implements DAOHibernateInterface {
 
     public boolean registry(String firstName, String lastName, String login, String password){
         if(ifUserExists(login,password)){
+            Transaction txn = session.beginTransaction();
             Student student = new Student();
             student.setFirstName(firstName);
             student.setLastName(lastName);
             student.setLogin(login);
             student.setPassword(password);
-            session.save(student);
+            txn.commit();
             return true;
         }else{
             return false;
         }
     }
-
-
-
-
-
 }
