@@ -3,10 +3,14 @@ package dao.hibernate;
 import model.Student;
 import model.Teacher;
 import model.User;
+import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.NoResultException;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,8 +21,10 @@ import java.util.List;
 public class DAOHibernateTeacher {
 
     private Session session = null;
+    private Logger logger = Logger.getLogger(DAOHibernateTeacher.class);
     private String loginQuery = "from Teacher AS teacher where teacher.login =:login " +
             "AND teacher.password =:password";
+    private String selectTeacherRequest = "from Teacher AS teacher WHERE teacher.login =:login";
 
     public DAOHibernateTeacher(){
         this.session = DAOHibernateUtil.getSessionFactory().openSession();
@@ -51,6 +57,9 @@ public class DAOHibernateTeacher {
         List<Teacher> result = (List<Teacher>) session.createQuery("from Teacher").list();
         return result;
     }
+
+    
+
 
 
 }
