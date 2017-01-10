@@ -24,7 +24,6 @@ public class DAOHibernateTeacher {
     private Logger logger = Logger.getLogger(DAOHibernateTeacher.class);
     private String loginQuery = "from Teacher AS teacher where teacher.login =:login " +
             "AND teacher.password =:password";
-    private String selectTeacherRequest = "from Teacher AS teacher WHERE teacher.login =:login";
 
     public DAOHibernateTeacher(){
         this.session = DAOHibernateUtil.getSessionFactory().openSession();
@@ -44,8 +43,8 @@ public class DAOHibernateTeacher {
         session.update(teacher);
         session.getTransaction().commit();
        } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e.getMessage(), "Insert error", JOptionPane.OK_OPTION);
-    } finally {
+            logger.info(e);
+        } finally {
         if (session != null && session.isOpen()) {
             session.close();
         }
@@ -58,7 +57,7 @@ public class DAOHibernateTeacher {
         return result;
     }
 
-    
+
 
 
 
