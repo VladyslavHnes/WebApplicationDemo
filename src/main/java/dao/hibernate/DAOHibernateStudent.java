@@ -51,7 +51,12 @@ public class DAOHibernateStudent implements DAOHibernateInterface {
 
     public boolean registry(String firstName, String lastName, String login, String password){
         if(ifUserExists(login,password)){
-            Query query = session.createQuery(insertStudentRequest);
+            Student student = new Student();
+            student.setFirstName(firstName);
+            student.setLastName(lastName);
+            student.setLogin(login);
+            student.setPassword(password);
+            session.save(student);
             return true;
         }else{
             return false;
