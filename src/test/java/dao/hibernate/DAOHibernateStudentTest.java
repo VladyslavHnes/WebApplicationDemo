@@ -15,8 +15,18 @@ public class DAOHibernateStudentTest {
     }
 
     @Test
-    public void testDAOHibernateLoginTest(){
+    public void testDAOHibernateLoginStudentTest(){
         assertEquals("Hnes",new DAOHibernateStudent().login("Vlad","Hnes123").getLastName());
+    }
+
+    @Test
+    public void testDAOHibernateIfUserExists(){
+        assertEquals(true, new DAOHibernateStudent().ifUserExists("Vlad","Hnes123"));
+    }
+
+    @Test
+    public void testDAOHibernateRegistry(){
+        assertEquals(true, new DAOHibernateStudent().registry("John","Black","John","Black123"));
     }
 
 }
