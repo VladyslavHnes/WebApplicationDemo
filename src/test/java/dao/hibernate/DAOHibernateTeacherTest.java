@@ -13,6 +13,17 @@ public class DAOHibernateTeacherTest {
         assertEquals("Gosling",new DAOHibernateTeacher().getTeachers().get(0).getLastName());
     }
 
+    @Test
+    public void testDAOHibernateLoginTeacherTest(){
+        assertEquals("Gosling",new DAOHibernateTeacher().login("James","Gosling123").getLastName());
+    }
+
+    @Test
+    public void testDAOHibernateIfUserExistsTest(){
+        //assertEquals(true,new DAOHibernateTeacher().);
+    }
+
+
 
 
 }
