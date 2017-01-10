@@ -20,7 +20,7 @@ public class DAOHibernateTeacherTest {
 
     @Test
     public void testDAOHibernateIfUserExistsTest(){
-        //assertEquals(true,new DAOHibernateTeacher().);
+        assertEquals(true,new DAOHibernateTeacher().ifUserExists("James","Gosling123"));
     }
 
 
