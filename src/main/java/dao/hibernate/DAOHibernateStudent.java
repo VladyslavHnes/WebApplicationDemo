@@ -1,5 +1,6 @@
 package dao.hibernate;
 
+import model.Course;
 import model.Student;
 import org.apache.log4j.Logger;
 import org.hibernate.NonUniqueResultException;
@@ -48,11 +49,13 @@ public class DAOHibernateStudent implements DAOHibernateInterface {
     }
 
     public int getMark(String subject, String firstName, String lastName){
-        Query query = session.createQuery("FROM " + subject + " AS " + subject +" WHERE "+ subject +".firstName =:firstName" +
-                " AND "+ subject + ".lastName =:lastName");
-        query.setParameter("firstName",firstName);
-        query.setParameter("lastName",lastName);
-        return (int) query.getSingleResult();
+        String queryString = String.format("FROM %s AS %s WHERE %s.firstName =:fn AND %s.lastName =:ln",
+                subject, subject, subject, subject);
+        Query query = session.createQuery(queryString);
+        query.setParameter("fn",firstName);
+        query.setParameter("ln",lastName);
+        Course obj = (Course) query.getSingleResult();
+        return obj.getMark();
     }
 
     public boolean registry(String firstName, String lastName, String login, String password){
