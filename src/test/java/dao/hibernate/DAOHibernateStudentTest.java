@@ -31,7 +31,7 @@ public class DAOHibernateStudentTest {
 
     @Test
     public void testDAOHibernateGetMark(){
-        assertEquals(true, new DAOHibernateStudent().getMark("Java","Vlad","Hnes"));
+        assertEquals(4, new DAOHibernateStudent().getMark("JavaScript","Vlad","Hnes"));
     }
 
 }
