@@ -16,11 +16,9 @@ import java.util.List;
 public class DAOHibernateStudent implements DAOHibernateInterface {
 
     private Session session;
-    private String loginRequest = "from Student AS student where student.login =:login " +
-            "AND student.password =:password";
-    private String selectStudentRequest = "from Student AS student WHERE student.login =:login";
-    private String insertStudentRequest = "insert into Student(firstName,lastName,login,password) " +
-            "select student.firstName, student.lastName,student.login,student.password from Student student";
+    private String loginRequest = "FROM Student AS Student WHERE Student.login =:login " +
+            "AND Student.password =:password";
+    private String selectStudentRequest = "FROM Student AS Student WHERE Student.login =:login";
     private Logger logger = Logger.getLogger(DAOHibernateStudent.class);
 
     public DAOHibernateStudent(){
@@ -47,6 +45,14 @@ public class DAOHibernateStudent implements DAOHibernateInterface {
             return false;
         }
         return true;
+    }
+
+    public int getMark(String subject, String firstName, String lastName){
+        Query query = session.createQuery("FROM " + subject + " AS " + subject +" WHERE "+ subject +".firstName =:firstName" +
+                " AND "+ subject + ".lastName =:lastName");
+        query.setParameter("firstName",firstName);
+        query.setParameter("lastName",lastName);
+        return (int) query.getSingleResult();
     }
 
     public boolean registry(String firstName, String lastName, String login, String password){
