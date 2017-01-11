@@ -1,6 +1,5 @@
 package model;
 
-import org.hibernate.cfg.DefaultNamingStrategy;
 
 import javax.persistence.*;
 

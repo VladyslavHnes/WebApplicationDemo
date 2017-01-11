@@ -9,7 +9,7 @@ import java.util.List;
 public interface DAOHibernateInterface {
 
     Student login(String login,String password);
-    List<Student> getAll();
+    List getAll();
 
 
 }
