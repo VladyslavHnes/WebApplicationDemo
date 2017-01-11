@@ -16,6 +16,9 @@
 
         <mapping class="model.Student"/>
         <mapping class="model.Teacher"/>
+        <mapping class="model.Java"/>
+        <mapping class="model.JavaScript"/>
+        <mapping class="model.DataStructures"/>
 
     </session-factory>
 </hibernate-configuration>
