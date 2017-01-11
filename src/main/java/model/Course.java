@@ -8,8 +8,6 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)
-@DiscriminatorValue(value="course")
 public abstract class Course {
 
     @Id
@@ -21,18 +19,18 @@ public abstract class Course {
     @Column(name = "lastName")
     protected String lastName;
     @Column(name = "BackgroundImageURL")
-    protected String BackgroundImageURL;
+    protected String backgroundImageURL;
     @Column(name = "mark")
     protected int mark;
 
 
 
     public String getBackgroundImageURL() {
-        return BackgroundImageURL;
+        return backgroundImageURL;
     }
 
-    public void setBackgroundImageURL(String imageURL) {
-        this.BackgroundImageURL = BackgroundImageURL;
+    public void setBackgroundImageURL(String backgroundImageURL) {
+        this.backgroundImageURL = backgroundImageURL;
     }
 
     public String getFirstName() {

@@ -7,8 +7,6 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)
-@DiscriminatorValue(value="user")
 public abstract class User {
 
     @Id
