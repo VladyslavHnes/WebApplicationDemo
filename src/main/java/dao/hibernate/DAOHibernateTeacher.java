@@ -1,17 +1,10 @@
 package dao.hibernate;
 
-import model.Student;
 import model.Teacher;
-import model.User;
 import org.apache.log4j.Logger;
-import org.hibernate.Hibernate;
-import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import javax.persistence.NoResultException;
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -28,6 +21,9 @@ public class DAOHibernateTeacher {
     public DAOHibernateTeacher(){
         this.session = DAOHibernateUtil.getSessionFactory().openSession();
     }
+
+    public List<Teacher> getAll() {return session.createQuery("from Teacher").list();}
+
 
     public Teacher login(String login,String password) {
         Query query = session.createQuery(loginQuery);
