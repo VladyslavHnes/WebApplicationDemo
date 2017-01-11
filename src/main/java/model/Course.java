@@ -1,30 +1,38 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 
 /**
  * Created by vlad on 27.10.16.
  */
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue(value="course")
 public abstract class Course {
 
-    private String firstName;
-    private String lastName;
-    private String mark;
-    private String backgroundImageURL;
+    @Id
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = "firstName")
+    protected String firstName;
+    @Column(name = "lastName")
+    protected String lastName;
+    @Column(name = "BackgroundImageURL")
+    protected String BackgroundImageURL;
+    @Column(name = "mark")
+    protected int mark;
 
 
 
     public String getBackgroundImageURL() {
-        return backgroundImageURL;
+        return BackgroundImageURL;
     }
 
-    public void setBackgroundImageURL(String backgroundImageURL) {
-        this.backgroundImageURL = backgroundImageURL;
+    public void setBackgroundImageURL(String imageURL) {
+        this.BackgroundImageURL = BackgroundImageURL;
     }
 
     public String getFirstName() {
@@ -43,13 +51,18 @@ public abstract class Course {
         this.lastName = lastName;
     }
 
-    public String getMark() {
-        return mark;
-    }
+    public int getMark() {return mark;}
 
-    public void setMark(String mark) {
+    public void setMark(int mark) {
         this.mark = mark;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
 }
