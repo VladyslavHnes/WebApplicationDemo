@@ -26,7 +26,7 @@ public class DAOHibernateStudentTest {
 
     @Test
     public void testDAOHibernateRegistry(){
-        assertEquals(true, new DAOHibernateStudent().registry("John","Black","John","Black123"));
+        assertEquals(true, new DAOHibernateStudent().registry("Chris","Pratt","Chris","Pratt123"));
     }
 
     @Test
