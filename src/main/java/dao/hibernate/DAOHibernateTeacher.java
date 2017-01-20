@@ -3,6 +3,7 @@ package dao.hibernate;
 import model.Teacher;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.sql.SQLException;
@@ -51,6 +52,18 @@ public class DAOHibernateTeacher {
         Session session = DAOHibernateUtil.getSessionFactory().openSession();
         List<Teacher> result = (List<Teacher>) session.createQuery("from Teacher").list();
         return result;
+    }
+
+    public void setMark(String subject, int mark, String firstName, String lastName){
+        Transaction tx = session.beginTransaction();
+        String setMarkQuery = String.format("update %s s set s.mark = :mrk where s.firstName = :fn and s.lastName = :ln",
+                subject);
+        Query query = session.createQuery(setMarkQuery);
+        query.setParameter("fn",firstName);
+        query.setParameter("ln",lastName);
+        query.setParameter("mrk",mark);
+        query.executeUpdate();
+        tx.commit();
     }
 
 
