@@ -1,7 +1,8 @@
 package dao.hibernate;
 
-import model.Course;
-import model.Student;
+import controller.teacher.SetImageTeacherController;
+import dao.requests.DAOShowCourses;
+import model.*;
 import org.apache.log4j.Logger;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
@@ -9,6 +10,12 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.NoResultException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -86,19 +93,70 @@ public class DAOHibernateStudent implements DAOHibernateInterface {
         tx.commit();
     }
 
-    public void setMark(String subject, int mark, String firstName, String lastName){
+
+
+    //set subject and subscribe method
+    public void subcribe(String subject,String firstName,String lastName){
         Transaction tx = session.beginTransaction();
-        String setMarkQuery = String.format("update %s s set s.mark = :mrk where s.firstName = :fn and s.lastName = :ln",
-                subject);
-        Query query = session.createQuery(setMarkQuery);
+        if(subject.equals("Java")){
+            Java java = new Java();
+            java.setFirstName(firstName);
+            java.setLastName(lastName);
+            session.save(java);
+        }else if(subject.equals("JavaScript")){
+            JavaScript javaScript = new JavaScript();
+            javaScript.setFirstName(firstName);
+            javaScript.setLastName(lastName);
+            session.save(javaScript);
+        }else {
+            DataStructures dataStructures = new DataStructures();
+            dataStructures.setFirstName(firstName);
+            dataStructures.setLastName(lastName);
+            session.save(dataStructures);
+        }
+        tx.commit();
+    }
+
+    public void unSubscribe(String subject,String lastName, String firstName) {
+        Transaction tx = session.beginTransaction();
+        String deleteQuery = String.format("delete from %s c where c.firstName = :fn and c.lastName = :ln", subject);
+        Query query = session.createQuery(deleteQuery);
         query.setParameter("fn",firstName);
         query.setParameter("ln",lastName);
-        query.setParameter("mrk",mark);
         query.executeUpdate();
         tx.commit();
     }
 
 
+        /**public static List<Course> getCourses(){
+            Logger logger = Logger.getLogger(SetImageTeacherController.class);
+            List<Course> arrayList = new ArrayList<>();
+            Class cl = DAOShowCourses.class;
+            ClassLoader classLoader = cl.getClassLoader();
+            URL urlCourses = classLoader.getResource("database/Courses");
+            File fileCourses = new File(urlCourses.getPath());
+            URL urlTeachers = classLoader.getResource("database/Teachers");
+            File fileTeachers = new File(urlTeachers.getPath());
+            try(
+                    java.io. BufferedReader brCourses = new BufferedReader(new FileReader(fileCourses));
+                    java.io. BufferedReader brTeacher = new BufferedReader(new FileReader(fileTeachers))
+            ) {
+                String lineCourses;
+                String lineTeachers;
+                while(((lineCourses = brCourses.readLine()) != null) &&
+                        (lineTeachers = brTeacher.readLine()) != null) {
+                    /**Course course = new Course();
+                     course.setSubject(lineCourses);
+                     String [] teacherLastNameAndFirstName = lineTeachers.split(" ");
+                     course.setFirstNameOfTeacher(teacherLastNameAndFirstName[0]);
+                     course.setLastNameOfTeacher(teacherLastNameAndFirstName[1]);
+                     arrayList.add(course);
+                     /
+                }
+            }catch (IOException e) {
+                logger.info(e);
+            }
+            return arrayList;
+        }*/
 
-
-    }
+}
