@@ -45,14 +45,9 @@ public class DAOHibernateTeacher {
         if (session != null && session.isOpen()) {
             session.close();
         }
-    }
+       }
     }
 
-    public List<Teacher> getTeachers() {
-        Session session = DAOHibernateUtil.getSessionFactory().openSession();
-        List<Teacher> result = (List<Teacher>) session.createQuery("from Teacher").list();
-        return result;
-    }
 
     public void setMark(String subject, int mark, String firstName, String lastName){
         Transaction tx = session.beginTransaction();

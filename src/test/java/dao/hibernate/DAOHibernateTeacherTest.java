@@ -10,7 +10,7 @@ public class DAOHibernateTeacherTest {
 
     @Test
     public void testDAOHibernateTeacherGetTest(){
-        assertEquals("Gosling",new DAOHibernateTeacher().getTeachers().get(0).getLastName());
+        assertEquals("Gosling",new DAOHibernateTeacher().getAll().get(0).getLastName());
     }
 
     @Test
