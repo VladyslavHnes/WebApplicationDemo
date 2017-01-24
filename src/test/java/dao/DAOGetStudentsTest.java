@@ -1,7 +1,7 @@
 package dao;
 
-import dao.requests.DAOGetMark;
-import dao.requests.DAOGetStudents;
+import dao.jdbc.DAOGetStudents;
+import dao.jdbc.DAOInterface;
 import model.Student;
 import org.junit.Test;
 

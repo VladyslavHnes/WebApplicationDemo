@@ -1,7 +1,5 @@
 package dao.hibernate;
 
-import controller.teacher.SetImageTeacherController;
-import dao.requests.DAOShowCourses;
 import model.*;
 import org.apache.log4j.Logger;
 import org.hibernate.NonUniqueResultException;
@@ -10,18 +8,12 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.NoResultException;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by vlad on 11.11.16.
  */
-public class DAOHibernateStudent implements DAOHibernateInterface {
+public class DAOHibernateStudent{
 
     private Session session;
     private String loginRequest = "FROM Student AS Student WHERE Student.login =:login " +

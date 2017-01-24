@@ -1,6 +1,6 @@
 package dao;
 
-import dao.requests.DAOSubscribe;
+import dao.jdbc.DAOSubscribe;
 import org.junit.Test;
 
 import java.sql.SQLException;

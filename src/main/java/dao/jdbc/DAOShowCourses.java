@@ -1,7 +1,6 @@
-package dao.requests;
+package dao.jdbc;
 
 import controller.teacher.SetImageTeacherController;
-import dao.DAOInterface;
 import model.Course;
 import org.apache.log4j.Logger;
 

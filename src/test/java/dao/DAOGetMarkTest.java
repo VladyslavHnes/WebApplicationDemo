@@ -1,6 +1,6 @@
 package dao;
 
-import dao.requests.DAOGetMark;
+import dao.jdbc.DAOGetMark;
 import org.junit.Test;
 
 import java.sql.SQLException;

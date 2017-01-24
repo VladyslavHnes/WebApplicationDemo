@@ -5,7 +5,7 @@
  */
 package dao;
 
-import dao.requests.DAOSetMark;
+import dao.jdbc.DAOSetMark;
 import org.junit.Test;
 
 import java.sql.SQLException;

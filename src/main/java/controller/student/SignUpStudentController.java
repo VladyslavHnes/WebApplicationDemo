@@ -1,19 +1,15 @@
 package controller.student;
 
-import dao.requests.DAOLogin;
-import dao.requests.DAORegistry;
-import dao.requests.DAOShowCourses;
+import dao.jdbc.DAORegistry;
+import dao.jdbc.DAOShowCourses;
 import model.Course;
 import model.Student;
-import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package dao;
 
-import dao.requests.DAOSetImageURL;
+import dao.jdbc.DAOSetImageURL;
 import org.junit.Test;
 
 import java.sql.SQLException;

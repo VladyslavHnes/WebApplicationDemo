@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by vlad on 10.11.16.
  */
-public class DAOHibernateTeacher {
+public class DAOHibernateTeacher{
 
     private Session session = null;
     private Logger logger = Logger.getLogger(DAOHibernateTeacher.class);
@@ -25,7 +25,6 @@ public class DAOHibernateTeacher {
 
     public List<Teacher> getAll() {return session.createQuery("from Teacher").list();}
 
-
     public Teacher login(String login,String password) {
         Query query = session.createQuery(loginQuery);
         query.setParameter("login", login);
@@ -33,7 +32,7 @@ public class DAOHibernateTeacher {
         return (Teacher) query.getSingleResult();
     }
 
-    public void updateTeacher(Teacher teacher) throws SQLException {
+    /*public void updateTeacher(Teacher teacher) throws SQLException {
         try{
         session = DAOHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -46,7 +45,7 @@ public class DAOHibernateTeacher {
             session.close();
         }
        }
-    }
+    }*/
 
 
     public void setMark(String subject, int mark, String firstName, String lastName){
@@ -60,9 +59,4 @@ public class DAOHibernateTeacher {
         query.executeUpdate();
         tx.commit();
     }
-
-
-
-
-
 }

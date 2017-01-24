@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.jdbc;
 
 /**
  *
  * @author vlad
  */
  import controller.student.SetImageStudentController;
+ import dao.jdbc.requests.DAO;
  import org.apache.log4j.Logger;
 
  import java.sql.*;
