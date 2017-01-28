@@ -1,7 +1,6 @@
 package dao.jdbc;
 
 import controller.teacher.SetImageTeacherController;
-import dao.jdbc.requests.DAO;
 import org.apache.log4j.Logger;
 
 import javax.xml.bind.JAXBException;
