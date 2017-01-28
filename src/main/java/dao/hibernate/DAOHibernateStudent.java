@@ -15,34 +15,29 @@ import java.util.List;
  */
 public class DAOHibernateStudent{
 
-    private static Session session;
-    private static String loginRequest = "FROM Student AS Student WHERE Student.login =:login " +
+    private Session session;
+    private String loginRequest = "FROM Student AS Student WHERE Student.login =:login " +
             "AND Student.password =:password";
-    private static String selectStudentRequest = "FROM Student AS Student WHERE Student.login =:login";
-    private static Logger logger = Logger.getLogger(DAOHibernateStudent.class);
+    private String selectStudentRequest = "FROM Student AS Student WHERE Student.login =:login";
+    private Logger logger = Logger.getLogger(DAOHibernateStudent.class);
 
     public DAOHibernateStudent() {
         this.session = DAOHibernateUtil.getSessionFactory().openSession();
 
     }
 
-    public static List<Student> getAll() {
+    public List<Student> getAll() {
         return session.createQuery("from Student").list();
     }
 
-    public static Student login(String login, String password){
-        try {
-            Query query = session.createQuery(loginRequest);
-            query.setParameter("login", login);
-            query.setParameter("password", password);
-            return (Student) query.getSingleResult();
-        }catch (NoResultException e){
-            logger.info(e);
-            return null;
-        }
+    public Student login(String login, String password) {
+        Query query = session.createQuery(loginRequest);
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return (Student) query.getSingleResult();
     }
 
-    public static boolean ifUserExists(String login, String password) {
+    public boolean ifUserExists(String login, String password) {
         Query query = session.createQuery(selectStudentRequest);
         query.setParameter("login", login);
         try {
@@ -54,7 +49,7 @@ public class DAOHibernateStudent{
         return true;
     }
 
-    public static int getMark(String subject, String firstName, String lastName) {
+    public int getMark(String subject, String firstName, String lastName) {
         String queryString = String.format("FROM %s AS %s WHERE %s.firstName =:fn AND %s.lastName =:ln",
                 subject, subject, subject, subject);
         Query query = session.createQuery(queryString);
@@ -64,7 +59,7 @@ public class DAOHibernateStudent{
         return obj.getMark();
     }
 
-    public static boolean registry(String firstName, String lastName, String login, String password) {
+    public boolean registry(String firstName, String lastName, String login, String password) {
         if (!ifUserExists(login, password)) {
             Transaction txn = session.beginTransaction();
             Student student = new Student();
@@ -80,7 +75,7 @@ public class DAOHibernateStudent{
         }
     }
 
-    public static void setImageURL(String imageURL, String login){
+    public void setImageURL(String imageURL, String login){
         Transaction tx = session.beginTransaction();
         String setImageQuery = "update Student s set s.imageURL = :img where s.login = :lgn";
         Query query = session.createQuery(setImageQuery);
@@ -93,7 +88,7 @@ public class DAOHibernateStudent{
 
 
     //set subject and subscribe method
-    public static void subcribe(String subject,String firstName,String lastName){
+    public void subcribe(String subject,String firstName,String lastName){
         Transaction tx = session.beginTransaction();
         if(subject.equals("Java")){
             Java java = new Java();
@@ -114,7 +109,7 @@ public class DAOHibernateStudent{
         tx.commit();
     }
 
-    public static void unSubscribe(String subject,String lastName, String firstName) {
+    public void unSubscribe(String subject,String lastName, String firstName) {
         Transaction tx = session.beginTransaction();
         String deleteQuery = String.format("delete from %s c where c.firstName = :fn and c.lastName = :ln", subject);
         Query query = session.createQuery(deleteQuery);
