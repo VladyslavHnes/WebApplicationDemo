@@ -8,6 +8,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "teachers")
 public class Teacher extends User{
+    @Id
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     @Column(name = "subject")
     private String subject;
     

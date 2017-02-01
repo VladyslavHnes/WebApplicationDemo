@@ -9,4 +9,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "students")
 public class Student extends User{
+    @Id
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
