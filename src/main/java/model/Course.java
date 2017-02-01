@@ -12,7 +12,7 @@ public abstract class Course {
 
     @Id
     @Column(name = "id")
-    protected long id;
+    private long id;
 
     @Column(name = "firstName")
     protected String firstName;
