@@ -16,9 +16,6 @@ import java.util.List;
 public class DAOHibernateStudent{
 
     private Session session;
-    private String loginRequest = "FROM Student AS Student WHERE Student.login =:login " +
-            "AND Student.password =:password";
-    private String selectStudentRequest = "FROM Student AS Student WHERE Student.login =:login";
     private Logger logger = Logger.getLogger(DAOHibernateStudent.class);
 
     public DAOHibernateStudent() {
@@ -26,18 +23,27 @@ public class DAOHibernateStudent{
 
     }
 
-    public List<Student> getAll() {
+    public List<?> getAll() {
         return session.createQuery("from Student").list();
     }
 
     public Student login(String login, String password) {
-        Query query = session.createQuery(loginRequest);
-        query.setParameter("login", login);
-        query.setParameter("password", password);
-        return (Student) query.getSingleResult();
+        try {
+            String loginRequest = "FROM Student AS Student WHERE Student.login =:login " +
+                    "AND Student.password =:password";
+            Query query = session.createQuery(loginRequest);
+            query.setParameter("login", login);
+            query.setParameter("password", password);
+            return (Student) query.getSingleResult();
+        }catch(NoResultException e){
+            logger.info(e);
+            return null;
+        }
     }
 
+
     public boolean ifUserExists(String login, String password) {
+        String selectStudentRequest = "FROM Student AS Student WHERE Student.login =:login";
         Query query = session.createQuery(selectStudentRequest);
         query.setParameter("login", login);
         try {
