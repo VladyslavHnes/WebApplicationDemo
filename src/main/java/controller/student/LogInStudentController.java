@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.hibernate.DAOHibernateStudent;
 import dao.jdbc.DAOGetMark;
-import dao.jdbc.DAOLogin;
 import dao.jdbc.DAOShowCourses;
 import model.Course;
 import model.Student;
@@ -24,7 +24,8 @@ public class LogInStudentController extends HttpServlet {
             throws ServletException, java.io.IOException, NullPointerException{
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        Student student = DAOLogin.studentRequest(login, password);
+        DAOHibernateStudent hibernateStudent = new DAOHibernateStudent();
+        Student student = hibernateStudent.login(login, password);
 
         List<Course> courses = DAOShowCourses.getCourses();
         HttpSession session = request.getSession(true);
