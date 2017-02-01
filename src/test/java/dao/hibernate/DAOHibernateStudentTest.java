@@ -1,6 +1,9 @@
 package dao.hibernate;
 
+import model.Student;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +14,7 @@ public class DAOHibernateStudentTest {
 
     @Test
     public void testDAOHibernateGetStudentsTest(){
-        assertEquals("Hnes",new DAOHibernateStudent().getAll().get(0).getLastName());
+        assertEquals("Hnes", ((Student) new DAOHibernateStudent().getAll().get(0)).getLastName());
     }
 
     @Test
