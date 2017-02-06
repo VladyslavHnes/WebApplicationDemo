@@ -36,11 +36,11 @@ public class LogInStudentController extends HttpServlet {
             String firstName = student.getFirstName();
             String lastName = student.getLastName();
             ArrayList<Integer> marks = new ArrayList<>();
-            int javaMark = DAOGetMark.getMark("Java", firstName, lastName);
+            int javaMark = hibernateStudent.getMark("Java", firstName, lastName);
             marks.add(javaMark);
-            int javaScriptMark = DAOGetMark.getMark("JavaScript", firstName, lastName);
+            int javaScriptMark = hibernateStudent.getMark("JavaScript", firstName, lastName);
             marks.add(javaScriptMark);
-            int dataStructuresMark = DAOGetMark.getMark("DataStructures", firstName, lastName);
+            int dataStructuresMark = hibernateStudent.getMark("DataStructures", firstName, lastName);
             marks.add(dataStructuresMark);
             session.setAttribute("marks", marks);
             session.setAttribute("student", student);
