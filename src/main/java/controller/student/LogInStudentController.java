@@ -9,10 +9,10 @@ import dao.hibernate.DAOHibernateStudent;
 import dao.jdbc.DAOGetMark;
 import dao.jdbc.DAOShowCourses;
 import model.Course;
+import model.CourseInfoEntity;
 import model.Student;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by vlad on 19.09.2016.
@@ -27,7 +27,7 @@ public class LogInStudentController extends HttpServlet {
         DAOHibernateStudent hibernateStudent = new DAOHibernateStudent();
         Student student = hibernateStudent.login(login, password);
 
-        List<Course> courses = DAOShowCourses.getCourses();
+        List<CourseInfoEntity> courses = hibernateStudent.getCoursesInfo();
         HttpSession session = request.getSession(true);
         session.setAttribute("courses", courses);
         if (student != null) {
