@@ -1,5 +1,6 @@
 package controller.student;
 
+import dao.hibernate.DAOHibernateStudent;
 import dao.jdbc.DAOSetImageURL;
 import model.Student;
 
@@ -18,11 +19,11 @@ public class SetImageStudentController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(true);
+        DAOHibernateStudent hibernateStudent = new DAOHibernateStudent();
         String imageURL = request.getParameter("imageURL");
         Student student = (Student) session.getAttribute("student");
-        String firstName = student.getFirstName();
-        String lastName = student.getLastName();
-        DAOSetImageURL.setImageURL("students",imageURL,firstName,lastName);
+        String login = student.getLogin();
+        hibernateStudent.setImageURL(imageURL,login);
         session.setAttribute("imageURL",imageURL);
         response.sendRedirect("StudentProfilePage.jsp");
     }
