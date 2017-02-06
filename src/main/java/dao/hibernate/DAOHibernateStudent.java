@@ -1,5 +1,7 @@
 package dao.hibernate;
 
+import controller.teacher.SetImageTeacherController;
+import dao.jdbc.DAOShowCourses;
 import model.*;
 import org.apache.log4j.Logger;
 import org.hibernate.NonUniqueResultException;
@@ -8,6 +10,12 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.NoResultException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -125,36 +133,34 @@ public class DAOHibernateStudent{
         tx.commit();
     }
 
-
-        /**public static List<Course> getCourses(){
-            Logger logger = Logger.getLogger(SetImageTeacherController.class);
-            List<Course> arrayList = new ArrayList<>();
-            Class cl = DAOShowCourses.class;
-            ClassLoader classLoader = cl.getClassLoader();
-            URL urlCourses = classLoader.getResource("database/Courses");
-            File fileCourses = new File(urlCourses.getPath());
-            URL urlTeachers = classLoader.getResource("database/Teachers");
-            File fileTeachers = new File(urlTeachers.getPath());
-            try(
-                    java.io. BufferedReader brCourses = new BufferedReader(new FileReader(fileCourses));
-                    java.io. BufferedReader brTeacher = new BufferedReader(new FileReader(fileTeachers))
-            ) {
-                String lineCourses;
-                String lineTeachers;
-                while(((lineCourses = brCourses.readLine()) != null) &&
-                        (lineTeachers = brTeacher.readLine()) != null) {
-                    /**Course course = new Course();
-                     course.setSubject(lineCourses);
-                     String [] teacherLastNameAndFirstName = lineTeachers.split(" ");
-                     course.setFirstNameOfTeacher(teacherLastNameAndFirstName[0]);
-                     course.setLastNameOfTeacher(teacherLastNameAndFirstName[1]);
-                     arrayList.add(course);
-                     /
-                }
-            }catch (IOException e) {
-                logger.info(e);
+    public List<CourseInfoEntity> getCoursesInfo(){
+        Logger logger = Logger.getLogger(SetImageTeacherController.class);
+        List<CourseInfoEntity> arrayList = new ArrayList<>();
+        Class cl = DAOShowCourses.class;
+        ClassLoader classLoader = cl.getClassLoader();
+        URL urlCourses = classLoader.getResource("database/Courses");
+        File fileCourses = new File(urlCourses.getPath());
+        URL urlTeachers = classLoader.getResource("database/Teachers");
+        File fileTeachers = new File(urlTeachers.getPath());
+        try(
+                java.io. BufferedReader brCourses = new BufferedReader(new FileReader(fileCourses));
+                java.io. BufferedReader brTeacher = new BufferedReader(new FileReader(fileTeachers))
+        ) {
+            String lineCourses;
+            String lineTeachers;
+            while(((lineCourses = brCourses.readLine()) != null) &&
+                    (lineTeachers = brTeacher.readLine()) != null) {
+                 CourseInfoEntity course = new CourseInfoEntity();
+                 course.setSubject(lineCourses);
+                 String [] teacherLastNameAndFirstName = lineTeachers.split(" ");
+                 course.setFirstNameOfTeacher(teacherLastNameAndFirstName[0]);
+                 course.setLastNameOfTeacher(teacherLastNameAndFirstName[1]);
+                 arrayList.add(course);
             }
-            return arrayList;
-        }*/
+        }catch (IOException e) {
+            logger.info(e);
+        }
+        return arrayList;
+    }
 
 }
