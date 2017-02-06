@@ -1,8 +1,10 @@
 package controller.student;
 
+import dao.hibernate.DAOHibernateStudent;
 import dao.jdbc.DAORegistry;
 import dao.jdbc.DAOShowCourses;
 import model.Course;
+import model.CourseInfoEntity;
 import model.Student;
 
 import javax.servlet.ServletException;
@@ -29,7 +31,8 @@ public class SignUpStudentController extends HttpServlet {
         student.setPassword(password);
         student.setFirstName(firstName);
         student.setLastName(lastName);
-        List<Course> courses = DAOShowCourses.getCourses();
+        DAOHibernateStudent hibernateStudent = new DAOHibernateStudent();
+        List<CourseInfoEntity> courses = hibernateStudent.getCoursesInfo();
         HttpSession session = request.getSession(true);
         session.setAttribute("courses",courses);
         boolean flag = DAORegistry.regStudent(student.getFirstName(),student.getLastName(),
@@ -39,7 +42,8 @@ public class SignUpStudentController extends HttpServlet {
             response.sendRedirect("SubscribeCoursePage.jsp"); //logged-in page
         }
         else {
-            response.sendRedirect("UserAlreadyExists.jsp"); //error page
+            session.setAttribute("userAlreadyExists",false);
+            response.sendRedirect("SignUpStudentPage.jsp");
         }
     }
 }
