@@ -64,13 +64,18 @@ public class DAOHibernateStudent{
     }
 
     public int getMark(String subject, String firstName, String lastName) {
-        String queryString = String.format("FROM %s AS %s WHERE %s.firstName =:fn AND %s.lastName =:ln",
-                subject, subject, subject, subject);
-        Query query = session.createQuery(queryString);
-        query.setParameter("fn", firstName);
-        query.setParameter("ln", lastName);
-        Course obj = (Course) query.getSingleResult();
-        return obj.getMark();
+        try {
+            String queryString = String.format("FROM %s AS %s WHERE %s.firstName =:fn AND %s.lastName =:ln",
+                    subject, subject, subject, subject);
+            Query query = session.createQuery(queryString);
+            query.setParameter("fn", firstName);
+            query.setParameter("ln", lastName);
+            Course obj = (Course) query.getSingleResult();
+            return obj.getMark();
+        }catch (NoResultException e){
+            logger.info(e);
+            return 0;
+        }
     }
 
     public boolean registry(String firstName, String lastName, String login, String password) {
