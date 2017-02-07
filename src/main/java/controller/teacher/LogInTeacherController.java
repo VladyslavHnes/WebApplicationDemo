@@ -35,7 +35,7 @@ public class LogInTeacherController extends HttpServlet {
             session.setAttribute("imageURL",imageURL);
             String subject = teacher.getSubject();
             session.setAttribute("subject",subject);
-            List<Course> studentsInfoList = (List<Course>) daoHibernateTeacher.getStudents(subject);
+            List<Course> studentsInfoList = (List<Course>) daoHibernateTeacher.getStudentsInfo(subject);
             //List of objects that have info about a certain student in a certain subject
             ArrayList<Integer> marks = new ArrayList<>();
             for (int i = 0;i < studentsInfoList.size();i++){

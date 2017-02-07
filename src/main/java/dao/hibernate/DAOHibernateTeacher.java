@@ -50,7 +50,7 @@ public class DAOHibernateTeacher{
         tx.commit();
     }
 
-    public List<?> getStudents(String subject){
+    public List<?> getStudentsInfo(String subject){
         Transaction tx = session.beginTransaction();
         String getStudentsQuery = String.format("from %s", subject);
         return session.createQuery(getStudentsQuery).list();
