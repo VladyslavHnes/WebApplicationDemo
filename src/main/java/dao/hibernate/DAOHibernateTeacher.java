@@ -1,12 +1,15 @@
 package dao.hibernate;
 
+import model.Course;
+import model.Student;
 import model.Teacher;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.SQLException;
+import javax.persistence.NoResultException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,26 +29,32 @@ public class DAOHibernateTeacher{
     public List<Teacher> getAll() {return session.createQuery("from Teacher").list();}
 
     public Teacher login(String login,String password) {
-        Query query = session.createQuery(loginQuery);
-        query.setParameter("login", login);
-        query.setParameter("password", password);
-        return (Teacher) query.getSingleResult();
+        try {
+            Query query = session.createQuery(loginQuery);
+            query.setParameter("login", login);
+            query.setParameter("password", password);
+            return (Teacher) query.getSingleResult();
+        }catch (NoResultException e){
+            logger.info(e);
+            return null;
+        }
     }
 
-    /*public void updateTeacher(Teacher teacher) throws SQLException {
-        try{
-        session = DAOHibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.update(teacher);
-        session.getTransaction().commit();
-       } catch (Exception e) {
-            logger.info(e);
-        } finally {
-        if (session != null && session.isOpen()) {
-            session.close();
-        }
-       }
-    }*/
+    public void setImageURL(String imageURL, String login){
+        Transaction tx = session.beginTransaction();
+        String setImageQuery = "update Teacher t set t.imageURL = :img where t.login = :lgn";
+        Query query = session.createQuery(setImageQuery);
+        query.setParameter("img", imageURL);
+        query.setParameter("lgn",login);
+        query.executeUpdate();
+        tx.commit();
+    }
+
+    public List<?> getStudents(String subject){
+        Transaction tx = session.beginTransaction();
+        String getStudentsQuery = String.format("from %s", subject);
+        return session.createQuery(getStudentsQuery).list();
+    }
 
 
     public void setMark(String subject, int mark, String firstName, String lastName){
