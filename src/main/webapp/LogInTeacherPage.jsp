@@ -87,7 +87,7 @@
 			<h1>Login</h1>
 			<form action="loginTeacher">
 				<p><input type="text" name="login" placeholder="Username"></p>
-				<p><input type="passwo+rd" name="password" placeholder="Password"></p>
+				<p><input type="password" name="password" placeholder="Password"></p>
 				<p class="submit"><input type="submit" value="sign in"></p>
 			</form>
 		</div>
