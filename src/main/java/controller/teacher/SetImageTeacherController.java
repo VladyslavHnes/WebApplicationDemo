@@ -1,5 +1,6 @@
 package controller.teacher;
 
+import dao.hibernate.DAOHibernateTeacher;
 import dao.jdbc.DAOSetImageURL;
 import model.Teacher;
 
@@ -16,11 +17,11 @@ public class SetImageTeacherController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(true);
+        DAOHibernateTeacher hibernateTeacher = new DAOHibernateTeacher();
         String imageURL = request.getParameter("imageURL");
         Teacher teacher = (Teacher) session.getAttribute("teacher");
-        String firstName = teacher.getFirstName();
-        String lastName = teacher.getLastName();
-        DAOSetImageURL.setImageURL("teachers",imageURL,firstName,lastName);
+        String login = teacher.getLogin();
+        hibernateTeacher.setImageURL(imageURL,login);
         session.setAttribute("imageURL",imageURL);
         response.sendRedirect("TeacherProfilePage.jsp");
     }
