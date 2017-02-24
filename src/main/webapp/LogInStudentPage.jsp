@@ -303,6 +303,8 @@ input, button {
    
   </div>
 </div>
+</body>
+</html>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -367,16 +369,9 @@ input, button {
   });
   
 });
+    <c:if test="${wrongLoginOrPassword == false}">
+    alert('Wrong login or password');
+    </c:if>
 </script>
 
 
-
-
-
-<c:if test="${wrongLoginOrPassword == false}">
-	<script>
-		alert('Wrong login or password');
-	</script>
-</c:if>
-</body>
-</html>
