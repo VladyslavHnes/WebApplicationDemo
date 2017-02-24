@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 /**
  * Created by vlad on 23.10.16.

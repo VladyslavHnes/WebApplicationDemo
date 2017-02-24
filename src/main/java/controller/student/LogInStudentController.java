@@ -5,16 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.requests.DAOGetMark;
-import dao.requests.DAOLogin;
-import dao.requests.DAOShowCourses;
+import dao.hibernate.DAOHibernateStudent;
+import dao.jdbc.DAOGetMark;
+import dao.jdbc.DAOShowCourses;
 import model.Course;
+import model.CourseInfoEntity;
 import model.Student;
-import org.apache.log4j.Logger;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by vlad on 19.09.2016.
@@ -26,9 +24,10 @@ public class LogInStudentController extends HttpServlet {
             throws ServletException, java.io.IOException, NullPointerException{
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        Student student = DAOLogin.studentRequest(login, password);
+        DAOHibernateStudent hibernateStudent = new DAOHibernateStudent();
+        Student student = hibernateStudent.login(login, password);
 
-        List<Course> courses = DAOShowCourses.getCourses();
+        List<CourseInfoEntity> courses = hibernateStudent.getCoursesInfo();
         HttpSession session = request.getSession(true);
         session.setAttribute("courses", courses);
         if (student != null) {
@@ -37,11 +36,11 @@ public class LogInStudentController extends HttpServlet {
             String firstName = student.getFirstName();
             String lastName = student.getLastName();
             ArrayList<Integer> marks = new ArrayList<>();
-            int javaMark = DAOGetMark.getMark("Java", firstName, lastName);
+            int javaMark = hibernateStudent.getMark("Java", firstName, lastName);
             marks.add(javaMark);
-            int javaScriptMark = DAOGetMark.getMark("JavaScript", firstName, lastName);
+            int javaScriptMark = hibernateStudent.getMark("JavaScript", firstName, lastName);
             marks.add(javaScriptMark);
-            int dataStructuresMark = DAOGetMark.getMark("DataStructures", firstName, lastName);
+            int dataStructuresMark = hibernateStudent.getMark("DataStructures", firstName, lastName);
             marks.add(dataStructuresMark);
             session.setAttribute("marks", marks);
             session.setAttribute("student", student);

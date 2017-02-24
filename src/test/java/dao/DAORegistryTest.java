@@ -5,7 +5,7 @@
  */
 package dao;
 
-import dao.requests.DAORegistry;
+import dao.jdbc.DAORegistry;
 import org.junit.Test;
 
 import java.sql.SQLException;

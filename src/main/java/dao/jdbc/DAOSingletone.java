@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import controller.teacher.SetImageTeacherController;
 import org.apache.log4j.Logger;

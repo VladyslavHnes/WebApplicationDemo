@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.requests;
+package dao.jdbc;
 
 import controller.teacher.SetImageTeacherController;
-import dao.DAOConnectionManager;
-import dao.DAOInterface;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;

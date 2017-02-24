@@ -5,7 +5,7 @@
  */
 package dao;
 
-import dao.requests.DAOLogin;
+import dao.jdbc.DAOLogin;
 import model.Student;
 import model.Teacher;
 import org.junit.Test;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.requests;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controller.teacher.SetImageTeacherController;
-import dao.DAOConnectionManager;
-import dao.DAOInterface;
 import model.Student;
 import model.Teacher;
 import model.User;

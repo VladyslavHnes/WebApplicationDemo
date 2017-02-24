@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java"
          contentType="text/html; charset=windows-1256"
          pageEncoding="windows-1256"
@@ -29,5 +30,11 @@
     <input type="submit" value="sign up">
 
 </form>
+
+<c:if test="${userAlreadyExists == false}">
+    <script>
+        alert('User with such login or password already exists');
+    </script>
+</c:if>
 </body>
 </html>

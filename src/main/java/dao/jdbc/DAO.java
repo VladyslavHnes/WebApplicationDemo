@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

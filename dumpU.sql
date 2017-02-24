@@ -45,7 +45,7 @@ INSERT INTO `DataStructures` (ID,mark,firstName,lastName) VALUES (1,4,'Vlad','Hn
 UNLOCK TABLES;
 
 --
--- Table structure for table `Java`
+-- Table structure for table `JavaClass`
 --
 
 DROP TABLE IF EXISTS `Java`;
@@ -62,13 +62,13 @@ CREATE TABLE `Java` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Java`
+-- Dumping data for table `JavaClass`
 --
 
 LOCK TABLES `Java` WRITE;
-/*!40000 ALTER TABLE `Java` DISABLE KEYS */;
+/*!40000 ALTER TABLE `JavaClass` DISABLE KEYS */;
 INSERT INTO `Java` (ID,mark,firstName,lastName) VALUES (1,5,'Vlad','Hnes'),(2,4,'Jack','Rich'),(3,4,'John','Reynolds');
-/*!40000 ALTER TABLE `Java` ENABLE KEYS */;
+/*!40000 ALTER TABLE `JavaClass` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

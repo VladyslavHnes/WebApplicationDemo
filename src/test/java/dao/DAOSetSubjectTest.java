@@ -1,7 +1,6 @@
 package dao;
 
-import dao.requests.DAOSetMark;
-import dao.requests.DAOSetSubject;
+import dao.jdbc.DAOSetSubject;
 import org.junit.Test;
 
 import java.sql.SQLException;

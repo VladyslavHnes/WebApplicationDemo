@@ -1,7 +1,6 @@
-package dao.requests;
+package dao.jdbc;
 
 import controller.teacher.SetImageTeacherController;
-import dao.DAOInterface;
 import model.Course;
 import org.apache.log4j.Logger;
 
@@ -35,12 +34,13 @@ public class DAOShowCourses implements DAOInterface {
             String lineTeachers;
             while(((lineCourses = brCourses.readLine()) != null) &&
                     (lineTeachers = brTeacher.readLine()) != null) {
-                Course course = new Course();
+                /**Course course = new Course();
                 course.setSubject(lineCourses);
                 String [] teacherLastNameAndFirstName = lineTeachers.split(" ");
                 course.setFirstNameOfTeacher(teacherLastNameAndFirstName[0]);
                 course.setLastNameOfTeacher(teacherLastNameAndFirstName[1]);
                 arrayList.add(course);
+                 */
             }
         }catch (IOException e) {
             logger.info(e);

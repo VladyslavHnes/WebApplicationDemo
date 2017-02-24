@@ -1,7 +1,8 @@
 package controller.teacher;
 
 import controller.student.SetImageStudentController;
-import dao.requests.DAOSetMark;
+import dao.hibernate.DAOHibernateTeacher;
+import model.Course;
 import model.Student;
 import org.apache.log4j.Logger;
 
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +22,7 @@ public class SetMarkController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(true);
-        ArrayList<Student> students = (ArrayList<Student>) session.getAttribute("students");
+        ArrayList<Course> students = (ArrayList<Course>) session.getAttribute("students");
         String subject = (String) session.getAttribute("subject");
         ArrayList<Integer> marksArray = new ArrayList<>();
         for(int i = 0;i < students.size();i++) {
@@ -38,7 +38,7 @@ public class SetMarkController extends HttpServlet {
                     setMark(subject,mark,firstName,lastName,marksArray);
                 }
             }catch (Exception e){
-                logger.error("Exception",e);
+                logger.info(e);
                 if (!response.isCommitted()) {
                     session.setAttribute("illegalValues", false);
                     response.sendRedirect("TeacherProfilePage.jsp");
@@ -50,10 +50,14 @@ public class SetMarkController extends HttpServlet {
         if(!response.isCommitted()){
             response.sendRedirect("TeacherProfilePage.jsp");
         }
+
     }
     private void setMark(String subject,Integer mark,String firstName,String lastName,
                          ArrayList<Integer> marksArray){
-            marksArray.add(mark);
+        marksArray.add(mark);
+        DAOHibernateTeacher teacher = new DAOHibernateTeacher();
+        teacher.setMark(subject,mark,firstName,lastName);
+
     }
 
 }

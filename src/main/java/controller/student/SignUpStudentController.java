@@ -1,19 +1,17 @@
 package controller.student;
 
-import dao.requests.DAOLogin;
-import dao.requests.DAORegistry;
-import dao.requests.DAOShowCourses;
+import dao.hibernate.DAOHibernateStudent;
+import dao.jdbc.DAORegistry;
+import dao.jdbc.DAOShowCourses;
 import model.Course;
+import model.CourseInfoEntity;
 import model.Student;
-import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +31,8 @@ public class SignUpStudentController extends HttpServlet {
         student.setPassword(password);
         student.setFirstName(firstName);
         student.setLastName(lastName);
-        List<Course> courses = DAOShowCourses.getCourses();
+        DAOHibernateStudent hibernateStudent = new DAOHibernateStudent();
+        List<CourseInfoEntity> courses = hibernateStudent.getCoursesInfo();
         HttpSession session = request.getSession(true);
         session.setAttribute("courses",courses);
         boolean flag = DAORegistry.regStudent(student.getFirstName(),student.getLastName(),
@@ -43,7 +42,8 @@ public class SignUpStudentController extends HttpServlet {
             response.sendRedirect("SubscribeCoursePage.jsp"); //logged-in page
         }
         else {
-            response.sendRedirect("UserAlreadyExists.jsp"); //error page
+            session.setAttribute("userAlreadyExists",false);
+            response.sendRedirect("SignUpStudentPage.jsp");
         }
     }
 }
